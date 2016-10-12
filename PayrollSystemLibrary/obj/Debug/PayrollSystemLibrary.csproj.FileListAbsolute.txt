@@ -1,0 +1,10 @@
+D:\Projects\PayrollSystem\PayrollSystemLibrary\bin\Debug\PayrollSystemLibrary.dll.config
+D:\Projects\PayrollSystem\PayrollSystemLibrary\bin\Debug\PayrollSystemLibrary.dll
+D:\Projects\PayrollSystem\PayrollSystemLibrary\bin\Debug\PayrollSystemLibrary.pdb
+D:\Projects\PayrollSystem\PayrollSystemLibrary\bin\Debug\EntityFramework.dll
+D:\Projects\PayrollSystem\PayrollSystemLibrary\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\PayrollSystem\PayrollSystemLibrary\bin\Debug\EntityFramework.xml
+D:\Projects\PayrollSystem\PayrollSystemLibrary\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\PayrollSystem\PayrollSystemLibrary\obj\Debug\PayrollSystemLibrary.csprojResolveAssemblyReference.cache
+D:\Projects\PayrollSystem\PayrollSystemLibrary\obj\Debug\PayrollSystemLibrary.dll
+D:\Projects\PayrollSystem\PayrollSystemLibrary\obj\Debug\PayrollSystemLibrary.pdb

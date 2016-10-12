@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PayrollSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Designation">
+    <Key>
+      <PropertyRef Name="DesignationId" />
+    </Key>
+    <Property Name="DesignationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DesignationName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeCode" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PAN_no" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DesignationId" Type="Int32" />
+    <Property Name="DepartmentId" Type="Int32" />
+    <Property Name="JoiningDate" Type="DateTime" Precision="0" />
+    <Property Name="TerminationDate" Type="DateTime" Precision="0" />
+    <Property Name="EmployeePFCode" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsAdmin" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Month">
+    <Key>
+      <PropertyRef Name="MonthId" />
+    </Key>
+    <Property Name="MonthId" Type="Int32" Nullable="false" />
+    <Property Name="MonthName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Salary">
+    <Key>
+      <PropertyRef Name="SalaryId" />
+    </Key>
+    <Property Name="SalaryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" />
+    <Property Name="MonthId" Type="Int32" />
+    <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="actual_basic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="actual_hra" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="actual_ca" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="actual_ma" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="actual_ia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="actual_sa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="earning_basic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="earning_hra" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="earning_ca" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="earning_ma" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="earning_ia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="earning_sa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="deduction_pf" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="deduction_pt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="deduction_tds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="paid_days" Type="Int32" />
+    <Property Name="present_days" Type="Int32" />
+    <Property Name="w_off" Type="Int32" />
+    <Property Name="leave" Type="Int32" />
+    <Property Name="absent" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="PayrollSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Departments" EntityType="Self.Department" />
+    <EntitySet Name="Designations" EntityType="Self.Designation" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Months" EntityType="Self.Month" />
+    <EntitySet Name="Salaries" EntityType="Self.Salary" />
+    <FunctionImport Name="AddEmployee">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="EmployeeCode" Mode="In" Type="String" />
+      <Parameter Name="EmailAddress" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="PAN_no" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="MobileNo" Mode="In" Type="String" />
+      <Parameter Name="DesignationId" Mode="In" Type="Int32" />
+      <Parameter Name="DepartmentId" Mode="In" Type="Int32" />
+      <Parameter Name="JoiningDate" Mode="In" Type="DateTime" />
+      <Parameter Name="TerminationDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EmployeePFCode" Mode="In" Type="String" />
+      <Parameter Name="IsAdmin" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="AddSalary">
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+      <Parameter Name="MonthId" Mode="In" Type="Int32" />
+      <Parameter Name="Year" Mode="In" Type="String" />
+      <Parameter Name="actual_basic" Mode="In" Type="String" />
+      <Parameter Name="actual_hra" Mode="In" Type="String" />
+      <Parameter Name="actual_ca" Mode="In" Type="String" />
+      <Parameter Name="actual_ma" Mode="In" Type="String" />
+      <Parameter Name="actual_ia" Mode="In" Type="String" />
+      <Parameter Name="actual_sa" Mode="In" Type="String" />
+      <Parameter Name="earning_basic" Mode="In" Type="String" />
+      <Parameter Name="earning_hra" Mode="In" Type="String" />
+      <Parameter Name="earning_ca" Mode="In" Type="String" />
+      <Parameter Name="earning_ma" Mode="In" Type="String" />
+      <Parameter Name="earning_ia" Mode="In" Type="String" />
+      <Parameter Name="earning_sa" Mode="In" Type="String" />
+      <Parameter Name="deduction_pf" Mode="In" Type="String" />
+      <Parameter Name="deduction_pt" Mode="In" Type="String" />
+      <Parameter Name="deduction_tds" Mode="In" Type="String" />
+      <Parameter Name="paid_days" Mode="In" Type="Int32" />
+      <Parameter Name="present_days" Mode="In" Type="Int32" />
+      <Parameter Name="w_off" Mode="In" Type="Int32" />
+      <Parameter Name="leave" Mode="In" Type="Int32" />
+      <Parameter Name="absent" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllMonths" ReturnType="Collection(PayrollSystemModel.GetAllMonths_Result)" />
+    <FunctionImport Name="GetAvailableMonthList" ReturnType="Collection(Int32)">
+      <Parameter Name="year" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetEmployeeByEmailAddress" ReturnType="Collection(PayrollSystemModel.GetEmployeeByEmailAddress_Result)">
+      <Parameter Name="EmailAddress" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetEmployeeByEmailAndPassword" ReturnType="Collection(PayrollSystemModel.GetEmployeeByEmailAndPassword_Result)">
+      <Parameter Name="EmailAddress" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetMonthListByYear" ReturnType="Collection(PayrollSystemModel.GetMonthListByYear_Result)">
+      <Parameter Name="year" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetYearList" ReturnType="Collection(String)" />
+  </EntityContainer>
+  <ComplexType Name="GetAllMonths_Result">
+    <Property Type="Int32" Name="MonthId" Nullable="false" />
+    <Property Type="String" Name="MonthName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetEmployeeByEmailAddress_Result">
+    <Property Type="Int32" Name="EmployeeId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="EmployeeCode" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="PAN_no" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="DesignationId" Nullable="true" />
+    <Property Type="Int32" Name="DepartmentId" Nullable="true" />
+    <Property Type="DateTime" Name="JoiningDate" Nullable="true" />
+    <Property Type="DateTime" Name="TerminationDate" Nullable="true" />
+    <Property Type="String" Name="EmployeePFCode" Nullable="true" MaxLength="500" />
+    <Property Type="Boolean" Name="IsAdmin" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetEmployeeByEmailAndPassword_Result">
+    <Property Type="Int32" Name="EmployeeId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="EmployeeCode" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="PAN_no" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="DesignationId" Nullable="true" />
+    <Property Type="Int32" Name="DepartmentId" Nullable="true" />
+    <Property Type="DateTime" Name="JoiningDate" Nullable="true" />
+    <Property Type="DateTime" Name="TerminationDate" Nullable="true" />
+    <Property Type="String" Name="EmployeePFCode" Nullable="true" MaxLength="500" />
+    <Property Type="Boolean" Name="IsAdmin" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetMonthListByYear_Result">
+    <Property Type="Int32" Name="MonthId" Nullable="false" />
+    <Property Type="String" Name="MonthName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,23 @@
+﻿The model was generated with warnings or errors.PayrollSystemModel.edmxPlease see the Error List for more details. These issues must be fixed before running your application.
+Loading metadata from the database took 00:00:00.5884874.
+Generating the model took 00:00:01.0298523.
+Added the connection string to the App.Config file.
+Writing the .edmx file took 00:00:00.0008518.
+The model was generated with warnings or errors.PayrollSystemModel.edmxPlease see the Error List for more details. These issues must be fixed before running your application.
+Loading metadata from the database took 00:00:00.5843023.
+Generating the model took 00:00:00.8688646.
+Generated model file: PayrollSystemModel.edmx.
+Loading metadata from the database took 00:00:00.4583669.
+Generating the model took 00:00:00.5783610.
+Generated model file: PayrollSystemModel.edmx.
+Loading metadata from the database took 00:00:00.4055943.
+Generating the model took 00:00:01.0544566.
+The model was generated with warnings or errors.PayrollSystemModel.edmxPlease see the Error List for more details. These issues must be fixed before running your application.
+Loading metadata from the database took 00:00:00.4247845.
+Generating the model took 00:00:00.8371806.
+The model was generated with warnings or errors.PayrollSystemModel.edmxPlease see the Error List for more details. These issues must be fixed before running your application.
+Loading metadata from the database took 00:00:00.5967001.
+Generating the model took 00:00:00.8842782.
+Generated model file: PayrollSystemModel.edmx.
+Loading metadata from the database took 00:00:00.5057605.
+Generating the model took 00:00:00.8300961.

@@ -1,0 +1,15 @@
+﻿@model PayrollSystem.Models.SalaryClass
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Upload excel file</h2>
+
+@using (Html.BeginForm("Index", "SalaryAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <input type="file" name="file" />
+    <input type="submit" value="OK" />
+}
+

@@ -1,0 +1,31 @@
+﻿@model PayrollSystem.Models.SalaryClass
+
+@{
+    ViewBag.Title = "GeneratePaySlip";
+}
+
+<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
+    <span class="intro-text-small">Select months to generate payslips</span>
+
+    <div>
+
+        @using (Html.BeginForm("GeneratePaySlip", "Salary", FormMethod.Post, new { @id = "GeneratePaySlip" }))
+        {
+           @Html.DropDownList("SalaryYear", new SelectList(Model.Year, "", ""), "Please select Year")
+            @Html.Hidden("SelectedYear")
+            <br />
+            if (Model.GetMonthListByYear != null)
+            {
+                foreach (var month in Model.GetMonthListByYear)
+                {
+                    @Html.CheckBox(month.MonthId.ToString(), new { @id = month.MonthId.ToString() });
+                    @Html.Label(month.MonthName);
+                    <br/>
+                }
+            }
+        }
+
+    </div>
+
+</div>
+
