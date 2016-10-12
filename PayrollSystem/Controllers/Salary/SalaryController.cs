@@ -11,7 +11,7 @@ namespace PayrollSystem.Controllers.Salary
 {
     public class SalaryController : BaseController
     {
-       
+
         public ActionResult Index()
         {
             if (Session["user"] != null)
@@ -43,7 +43,7 @@ namespace PayrollSystem.Controllers.Salary
                 else
                 {
                     db.AddEmployee(model.Employee.Name.Trim(), model.Employee.EmployeeCode, model.Employee.EmailAddress.Trim(),
-                        FormsAuthentication.HashPasswordForStoringInConfigFile(model.Employee.Password, "MD5"), model.Employee.Gender, FormsAuthentication.HashPasswordForStoringInConfigFile(model.Employee.PAN_no.Trim(), "MD5"), model.Employee.Address,
+                        FormsAuthentication.HashPasswordForStoringInConfigFile(model.Employee.Password, "MD5"), model.Employee.Gender, model.Employee.PAN_no.Trim(), model.Employee.Address,
                         model.Employee.MobileNo.Trim(), model.Employee.DesignationId, model.Employee.DepartmentId,
                         model.Employee.JoiningDate, model.Employee.TerminationDate, model.Employee.EmployeePFCode, false);
 
@@ -72,11 +72,13 @@ namespace PayrollSystem.Controllers.Salary
 
         public ActionResult GeneratePaySlip()
         {
-            if(Session["user"] ==null)
+            if (Session["user"] == null)
             {
                 return RedirectToAction("Index");
             }
-            SalaryClass model = new SalaryClass();           
+
+
+            SalaryClass model = new SalaryClass();
 
             List<string> y_lst = new List<string>();
 
@@ -87,20 +89,43 @@ namespace PayrollSystem.Controllers.Salary
             return View(model);
         }
 
+
+
         [HttpPost]
         public ActionResult GeneratePaySlip(FormCollection form)
-        {
-            string SelectedYear = form["SelectedYear"].ToString();
+        { 
             SalaryClass model = new SalaryClass();
+            if(form["btnSubmit"].ToString().Trim() =="Generate payslip")
+            {
+                //List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result> lst = (List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result>)(Session["user"]);
+                //model.GetMonthListByYear = (List<GetMonthListByYear_Result>)db.GetMonthListByYear(form["SelectedYear"].ToString(), lst.FirstOrDefault().EmployeeId).ToList();
+
+                string[] AllStrings = form["chkMonthList"].Split(',');
+            }
+
+           
+
             List<string> y_lst = new List<string>();
 
             y_lst = db.GetYearList().ToList();
 
             model.Year = y_lst;
-
-            model.GetMonthListByYear = (List<GetMonthListByYear_Result>)db.GetMonthListByYear(SelectedYear).ToList();
-
             return View(model);
+        }
+
+        public ActionResult MonthList(int? year)
+        {
+            if (year == null)
+            {
+                return PartialView();
+            }
+            SalaryClass model = new SalaryClass();
+
+
+            List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result> lst = (List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result>)(Session["user"]);
+            model.GetMonthListByYear = (List<GetMonthListByYear_Result>)db.GetMonthListByYear(year.ToString(), lst.FirstOrDefault().EmployeeId).ToList();
+
+            return PartialView("MonthList", model);
         }
     }
 }

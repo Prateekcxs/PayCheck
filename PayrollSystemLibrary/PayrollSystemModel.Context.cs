@@ -227,13 +227,17 @@ namespace PayrollSystemLibrary
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetEmployeeByEmailAndPassword_Result>("GetEmployeeByEmailAndPassword", emailAddressParameter, passwordParameter);
         }
     
-        public virtual ObjectResult<GetMonthListByYear_Result> GetMonthListByYear(string year)
+        public virtual ObjectResult<GetMonthListByYear_Result> GetMonthListByYear(string year, Nullable<int> employeeId)
         {
             var yearParameter = year != null ?
                 new ObjectParameter("year", year) :
                 new ObjectParameter("year", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMonthListByYear_Result>("GetMonthListByYear", yearParameter);
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("EmployeeId", employeeId) :
+                new ObjectParameter("EmployeeId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMonthListByYear_Result>("GetMonthListByYear", yearParameter, employeeIdParameter);
         }
     
         public virtual ObjectResult<string> GetYearList()

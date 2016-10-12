@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PayrollSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PayrollSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="DepartmentId" />
@@ -129,6 +129,7 @@
         </Function>
         <Function Name="GetMonthListByYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="year" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmployeeId" Type="int" Mode="In" />
         </Function>
         <Function Name="GetYearList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="PayrollSystemModelStoreContainer">
@@ -138,8 +139,7 @@
           <EntitySet Name="Month" EntityType="Self.Month" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Salary" EntityType="Self.Salary" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PayrollSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -262,17 +262,18 @@
           </FunctionImport>
           <FunctionImport Name="GetAllMonths" ReturnType="Collection(PayrollSystemModel.GetAllMonths_Result)" />
           <FunctionImport Name="GetAvailableMonthList" ReturnType="Collection(Int32)">
-            <Parameter Name="year" Mode="In" Type="String" />
+          <Parameter Name="year" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetEmployeeByEmailAddress" ReturnType="Collection(PayrollSystemModel.GetEmployeeByEmailAddress_Result)">
-            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+          <Parameter Name="EmailAddress" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetEmployeeByEmailAndPassword" ReturnType="Collection(PayrollSystemModel.GetEmployeeByEmailAndPassword_Result)">
             <Parameter Name="EmailAddress" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetMonthListByYear" ReturnType="Collection(PayrollSystemModel.GetMonthListByYear_Result)">
-            <Parameter Name="year" Mode="In" Type="String" />
+          <Parameter Name="year" Mode="In" Type="String" />
+            <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetYearList" ReturnType="Collection(String)" />
         </EntityContainer>

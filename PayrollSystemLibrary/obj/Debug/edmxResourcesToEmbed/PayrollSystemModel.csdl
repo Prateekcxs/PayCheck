@@ -130,6 +130,7 @@
     </FunctionImport>
     <FunctionImport Name="GetMonthListByYear" ReturnType="Collection(PayrollSystemModel.GetMonthListByYear_Result)">
       <Parameter Name="year" Mode="In" Type="String" />
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="GetYearList" ReturnType="Collection(String)" />
   </EntityContainer>

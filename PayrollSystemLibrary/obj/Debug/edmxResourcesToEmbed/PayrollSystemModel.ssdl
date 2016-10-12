@@ -124,6 +124,7 @@
   </Function>
   <Function Name="GetMonthListByYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="year" Type="nvarchar" Mode="In" />
+    <Parameter Name="EmployeeId" Type="int" Mode="In" />
   </Function>
   <Function Name="GetYearList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="PayrollSystemModelStoreContainer">

@@ -140,6 +140,8 @@
     <Content Include="Scripts\jquery.magnific-popup.min.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.stellar.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.waypoints.min.js" />
     <Content Include="Scripts\magnific-popup-options.js" />
     <Content Include="Scripts\main.js" />
@@ -171,6 +173,7 @@
     <Content Include="Views\Salary\GeneratePaySlip.cshtml" />
     <Content Include="Views\Shared\LoggedInNavigation.cshtml" />
     <Content Include="Views\SalaryAdmin\Index.cshtml" />
+    <Content Include="Views\Salary\MonthList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
