@@ -126,6 +126,11 @@
     <Parameter Name="year" Type="nvarchar" Mode="In" />
     <Parameter Name="EmployeeId" Type="int" Mode="In" />
   </Function>
+  <Function Name="GetSalaryOfEmployeeByEmployeeIdMonthYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmployeeId" Type="int" Mode="In" />
+    <Parameter Name="MonthId" Type="int" Mode="In" />
+    <Parameter Name="Year" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="GetYearList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="PayrollSystemModelStoreContainer">
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />

@@ -6,12 +6,17 @@ using System.Web.Mvc;
 using PayrollSystemLibrary;
 using PayrollSystem.Models;
 using System.Web.Security;
+using System.IO;
+using System.Web.UI;
+using NReco.PdfGenerator;
+using System.Net.Mail;
 
 namespace PayrollSystem.Controllers.Salary
 {
     public class SalaryController : BaseController
     {
-
+        string SalarySlipHtmlContent = "";
+        string output_path_pdf = "";
         public ActionResult Index()
         {
             if (Session["user"] != null)
@@ -93,17 +98,66 @@ namespace PayrollSystem.Controllers.Salary
 
         [HttpPost]
         public ActionResult GeneratePaySlip(FormCollection form)
-        { 
+        {
             SalaryClass model = new SalaryClass();
-            if(form["btnSubmit"].ToString().Trim() =="Generate payslip")
+            List<GetEmployeeByEmailAndPassword_Result> lst = (List<GetEmployeeByEmailAndPassword_Result>)(Session["user"]);
+            if (form["btnSubmit"].ToString().Trim() == "Generate payslip")
             {
-                //List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result> lst = (List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result>)(Session["user"]);
-                //model.GetMonthListByYear = (List<GetMonthListByYear_Result>)db.GetMonthListByYear(form["SelectedYear"].ToString(), lst.FirstOrDefault().EmployeeId).ToList();
 
-                string[] AllStrings = form["chkMonthList"].Split(',');
+                model.GetEmployeeByEmailAddress = db.GetEmployeeByEmailAddress(lst.FirstOrDefault().EmailAddress).ToList();
+
+                SmtpClient MailObj = new SmtpClient();
+                MailMessage mm1 = new MailMessage(new MailAddress("prateek@cynexis.com", "Salary Slip"), new MailAddress(model.GetEmployeeByEmailAddress.FirstOrDefault().EmailAddress, model.GetEmployeeByEmailAddress.FirstOrDefault().EmailAddress));
+                mm1.Subject = "Salary slip for month of ";
+                mm1.Body = "Please find the attachment of your salary slip for month of ";
+
+
+                string[] selectedMonths = form["chkMonthList"].Split(',');
+
+
+                foreach (string selectedMonth in selectedMonths)
+                {
+
+                    model.GetSalaryOfEmployeeByEmployeeIdMonthYear = db.GetSalaryOfEmployeeByEmployeeIdMonthYear(lst.FirstOrDefault().EmployeeId, int.Parse(selectedMonth), form["SelectedYear"].ToString()).ToList();
+
+                    SalarySlipHtmlContent = ViewToString("SalarySlipHtml", model);
+
+                    mm1.Subject += model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().MonthName + ", ";
+                    mm1.Body += model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().MonthName + ", ";
+
+
+                    ///////////////////////////////////////////////// Generate PDF from HTML //////////////////////////////
+
+                    HtmlToPdfConverter htmlToPdf = new NReco.PdfGenerator.HtmlToPdfConverter();
+                    byte[] pdfBytes = htmlToPdf.GeneratePdf(SalarySlipHtmlContent);
+
+                    output_path_pdf = Server.MapPath("/SalaryPDFFiles/" + "Salary Slip_" + model.GetEmployeeByEmailAddress.FirstOrDefault().Name + "_" +
+                                                                model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().MonthName + "_" +
+                                                                model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().Year + ".pdf");
+
+                    System.IO.File.WriteAllBytes(output_path_pdf, pdfBytes);
+
+                    /////////////////////////////////////End Generate PDF from HTML //////////////////////////////
+
+
+                    Attachment file = new Attachment(output_path_pdf);
+
+                    mm1.Attachments.Add(file);
+
+                }
+
+                mm1.Subject = mm1.Subject.Trim().TrimEnd(',');
+                mm1.Body = mm1.Body.Trim().TrimEnd(',');
+                // mm1.Subject += " " + model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().Year;
+                //   mm1.Body += " " + model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().Year;
+                mm1.IsBodyHtml = true;
+                mm1.Priority = MailPriority.Normal;
+                MailObj.Send(mm1);
+
             }
 
-           
+
+
 
             List<string> y_lst = new List<string>();
 
@@ -127,5 +181,6 @@ namespace PayrollSystem.Controllers.Salary
 
             return PartialView("MonthList", model);
         }
+
     }
 }

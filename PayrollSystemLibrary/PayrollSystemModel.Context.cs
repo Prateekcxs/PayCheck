@@ -244,5 +244,22 @@ namespace PayrollSystemLibrary
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetYearList");
         }
+    
+        public virtual ObjectResult<GetSalaryOfEmployeeByEmployeeIdMonthYear_Result> GetSalaryOfEmployeeByEmployeeIdMonthYear(Nullable<int> employeeId, Nullable<int> monthId, string year)
+        {
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("EmployeeId", employeeId) :
+                new ObjectParameter("EmployeeId", typeof(int));
+    
+            var monthIdParameter = monthId.HasValue ?
+                new ObjectParameter("MonthId", monthId) :
+                new ObjectParameter("MonthId", typeof(int));
+    
+            var yearParameter = year != null ?
+                new ObjectParameter("Year", year) :
+                new ObjectParameter("Year", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalaryOfEmployeeByEmployeeIdMonthYear_Result>("GetSalaryOfEmployeeByEmployeeIdMonthYear", employeeIdParameter, monthIdParameter, yearParameter);
+        }
     }
 }

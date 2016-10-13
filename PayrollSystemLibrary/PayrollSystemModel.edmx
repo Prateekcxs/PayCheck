@@ -131,6 +131,11 @@
           <Parameter Name="year" Type="nvarchar" Mode="In" />
           <Parameter Name="EmployeeId" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetSalaryOfEmployeeByEmployeeIdMonthYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeId" Type="int" Mode="In" />
+          <Parameter Name="MonthId" Type="int" Mode="In" />
+          <Parameter Name="Year" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="GetYearList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="PayrollSystemModelStoreContainer">
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
@@ -272,10 +277,15 @@
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetMonthListByYear" ReturnType="Collection(PayrollSystemModel.GetMonthListByYear_Result)">
-          <Parameter Name="year" Mode="In" Type="String" />
+            <Parameter Name="year" Mode="In" Type="String" />
             <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetYearList" ReturnType="Collection(String)" />
+          <FunctionImport Name="GetSalaryOfEmployeeByEmployeeIdMonthYear" ReturnType="Collection(PayrollSystemModel.GetSalaryOfEmployeeByEmployeeIdMonthYear_Result)">
+            <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+            <Parameter Name="MonthId" Mode="In" Type="Int32" />
+            <Parameter Name="Year" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetAllMonths_Result">
           <Property Type="Int32" Name="MonthId" Nullable="false" />
@@ -318,6 +328,37 @@
         <ComplexType Name="GetMonthListByYear_Result">
           <Property Type="Int32" Name="MonthId" Nullable="false" />
           <Property Type="String" Name="MonthName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetSalaryOfEmployeeByEmployeeIdMonthYear_Result">
+          <Property Type="Int32" Name="SalaryId" Nullable="false" />
+          <Property Type="Int32" Name="EmployeeId" Nullable="true" />
+          <Property Type="Int32" Name="MonthId" Nullable="false" />
+          <Property Type="String" Name="Year" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="actual_basic" Nullable="true" />
+          <Property Type="String" Name="actual_hra" Nullable="true" />
+          <Property Type="String" Name="actual_ca" Nullable="true" />
+          <Property Type="String" Name="actual_ma" Nullable="true" />
+          <Property Type="String" Name="actual_ia" Nullable="true" />
+          <Property Type="String" Name="actual_sa" Nullable="true" />
+          <Property Type="String" Name="earning_basic" Nullable="true" />
+          <Property Type="String" Name="earning_hra" Nullable="true" />
+          <Property Type="String" Name="earning_ca" Nullable="true" />
+          <Property Type="String" Name="earning_ma" Nullable="true" />
+          <Property Type="String" Name="earning_ia" Nullable="true" />
+          <Property Type="String" Name="earning_sa" Nullable="true" />
+          <Property Type="String" Name="deduction_pf" Nullable="true" />
+          <Property Type="String" Name="deduction_pt" Nullable="true" />
+          <Property Type="String" Name="deduction_tds" Nullable="true" />
+          <Property Type="Int32" Name="paid_days" Nullable="true" />
+          <Property Type="Int32" Name="present_days" Nullable="true" />
+          <Property Type="Int32" Name="w_off" Nullable="true" />
+          <Property Type="Int32" Name="leave" Nullable="true" />
+          <Property Type="Int32" Name="absent" Nullable="true" />
+          <Property Type="String" Name="MonthName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Gross" Nullable="true" />
+          <Property Type="Int32" Name="Gross_Total" Nullable="true" />
+          <Property Type="Int32" Name="Net_Total" Nullable="true" />
+          <Property Type="Int32" Name="Deduction_Total" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -462,6 +503,41 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetYearList" FunctionName="PayrollSystemModel.Store.GetYearList" />
+          <FunctionImportMapping FunctionImportName="GetSalaryOfEmployeeByEmployeeIdMonthYear" FunctionName="PayrollSystemModel.Store.GetSalaryOfEmployeeByEmployeeIdMonthYear">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PayrollSystemModel.GetSalaryOfEmployeeByEmployeeIdMonthYear_Result">
+                <ScalarProperty Name="SalaryId" ColumnName="SalaryId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="MonthId" ColumnName="MonthId" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="actual_basic" ColumnName="actual_basic" />
+                <ScalarProperty Name="actual_hra" ColumnName="actual_hra" />
+                <ScalarProperty Name="actual_ca" ColumnName="actual_ca" />
+                <ScalarProperty Name="actual_ma" ColumnName="actual_ma" />
+                <ScalarProperty Name="actual_ia" ColumnName="actual_ia" />
+                <ScalarProperty Name="actual_sa" ColumnName="actual_sa" />
+                <ScalarProperty Name="earning_basic" ColumnName="earning_basic" />
+                <ScalarProperty Name="earning_hra" ColumnName="earning_hra" />
+                <ScalarProperty Name="earning_ca" ColumnName="earning_ca" />
+                <ScalarProperty Name="earning_ma" ColumnName="earning_ma" />
+                <ScalarProperty Name="earning_ia" ColumnName="earning_ia" />
+                <ScalarProperty Name="earning_sa" ColumnName="earning_sa" />
+                <ScalarProperty Name="deduction_pf" ColumnName="deduction_pf" />
+                <ScalarProperty Name="deduction_pt" ColumnName="deduction_pt" />
+                <ScalarProperty Name="deduction_tds" ColumnName="deduction_tds" />
+                <ScalarProperty Name="paid_days" ColumnName="paid_days" />
+                <ScalarProperty Name="present_days" ColumnName="present_days" />
+                <ScalarProperty Name="w_off" ColumnName="w_off" />
+                <ScalarProperty Name="leave" ColumnName="leave" />
+                <ScalarProperty Name="absent" ColumnName="absent" />
+                <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+                <ScalarProperty Name="Gross" ColumnName="Gross" />
+                <ScalarProperty Name="Gross_Total" ColumnName="Gross_Total" />
+                <ScalarProperty Name="Net_Total" ColumnName="Net_Total" />
+                <ScalarProperty Name="Deduction_Total" ColumnName="Deduction_Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

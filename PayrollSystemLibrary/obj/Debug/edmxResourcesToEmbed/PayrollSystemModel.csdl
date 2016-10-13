@@ -133,6 +133,11 @@
       <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="GetYearList" ReturnType="Collection(String)" />
+    <FunctionImport Name="GetSalaryOfEmployeeByEmployeeIdMonthYear" ReturnType="Collection(PayrollSystemModel.GetSalaryOfEmployeeByEmployeeIdMonthYear_Result)">
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+      <Parameter Name="MonthId" Mode="In" Type="Int32" />
+      <Parameter Name="Year" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="GetAllMonths_Result">
     <Property Type="Int32" Name="MonthId" Nullable="false" />
@@ -175,5 +180,36 @@
   <ComplexType Name="GetMonthListByYear_Result">
     <Property Type="Int32" Name="MonthId" Nullable="false" />
     <Property Type="String" Name="MonthName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetSalaryOfEmployeeByEmployeeIdMonthYear_Result">
+    <Property Type="Int32" Name="SalaryId" Nullable="false" />
+    <Property Type="Int32" Name="EmployeeId" Nullable="true" />
+    <Property Type="Int32" Name="MonthId" Nullable="false" />
+    <Property Type="String" Name="Year" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="actual_basic" Nullable="true" />
+    <Property Type="String" Name="actual_hra" Nullable="true" />
+    <Property Type="String" Name="actual_ca" Nullable="true" />
+    <Property Type="String" Name="actual_ma" Nullable="true" />
+    <Property Type="String" Name="actual_ia" Nullable="true" />
+    <Property Type="String" Name="actual_sa" Nullable="true" />
+    <Property Type="String" Name="earning_basic" Nullable="true" />
+    <Property Type="String" Name="earning_hra" Nullable="true" />
+    <Property Type="String" Name="earning_ca" Nullable="true" />
+    <Property Type="String" Name="earning_ma" Nullable="true" />
+    <Property Type="String" Name="earning_ia" Nullable="true" />
+    <Property Type="String" Name="earning_sa" Nullable="true" />
+    <Property Type="String" Name="deduction_pf" Nullable="true" />
+    <Property Type="String" Name="deduction_pt" Nullable="true" />
+    <Property Type="String" Name="deduction_tds" Nullable="true" />
+    <Property Type="Int32" Name="paid_days" Nullable="true" />
+    <Property Type="Int32" Name="present_days" Nullable="true" />
+    <Property Type="Int32" Name="w_off" Nullable="true" />
+    <Property Type="Int32" Name="leave" Nullable="true" />
+    <Property Type="Int32" Name="absent" Nullable="true" />
+    <Property Type="String" Name="MonthName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Gross" Nullable="true" />
+    <Property Type="Int32" Name="Gross_Total" Nullable="true" />
+    <Property Type="Int32" Name="Net_Total" Nullable="true" />
+    <Property Type="Int32" Name="Deduction_Total" Nullable="true" />
   </ComplexType>
 </Schema>

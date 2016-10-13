@@ -71,6 +71,9 @@
     <Compile Include="GetMonthListByYear_Result.cs">
       <DependentUpon>PayrollSystemModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetSalaryOfEmployeeByEmployeeIdMonthYear_Result.cs">
+      <DependentUpon>PayrollSystemModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Month.cs">
       <DependentUpon>PayrollSystemModel.tt</DependentUpon>
     </Compile>

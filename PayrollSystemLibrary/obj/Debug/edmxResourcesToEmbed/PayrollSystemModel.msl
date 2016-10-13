@@ -138,5 +138,40 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="GetYearList" FunctionName="PayrollSystemModel.Store.GetYearList" />
+    <FunctionImportMapping FunctionImportName="GetSalaryOfEmployeeByEmployeeIdMonthYear" FunctionName="PayrollSystemModel.Store.GetSalaryOfEmployeeByEmployeeIdMonthYear">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PayrollSystemModel.GetSalaryOfEmployeeByEmployeeIdMonthYear_Result">
+          <ScalarProperty Name="SalaryId" ColumnName="SalaryId" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="MonthId" ColumnName="MonthId" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="actual_basic" ColumnName="actual_basic" />
+          <ScalarProperty Name="actual_hra" ColumnName="actual_hra" />
+          <ScalarProperty Name="actual_ca" ColumnName="actual_ca" />
+          <ScalarProperty Name="actual_ma" ColumnName="actual_ma" />
+          <ScalarProperty Name="actual_ia" ColumnName="actual_ia" />
+          <ScalarProperty Name="actual_sa" ColumnName="actual_sa" />
+          <ScalarProperty Name="earning_basic" ColumnName="earning_basic" />
+          <ScalarProperty Name="earning_hra" ColumnName="earning_hra" />
+          <ScalarProperty Name="earning_ca" ColumnName="earning_ca" />
+          <ScalarProperty Name="earning_ma" ColumnName="earning_ma" />
+          <ScalarProperty Name="earning_ia" ColumnName="earning_ia" />
+          <ScalarProperty Name="earning_sa" ColumnName="earning_sa" />
+          <ScalarProperty Name="deduction_pf" ColumnName="deduction_pf" />
+          <ScalarProperty Name="deduction_pt" ColumnName="deduction_pt" />
+          <ScalarProperty Name="deduction_tds" ColumnName="deduction_tds" />
+          <ScalarProperty Name="paid_days" ColumnName="paid_days" />
+          <ScalarProperty Name="present_days" ColumnName="present_days" />
+          <ScalarProperty Name="w_off" ColumnName="w_off" />
+          <ScalarProperty Name="leave" ColumnName="leave" />
+          <ScalarProperty Name="absent" ColumnName="absent" />
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+          <ScalarProperty Name="Gross" ColumnName="Gross" />
+          <ScalarProperty Name="Gross_Total" ColumnName="Gross_Total" />
+          <ScalarProperty Name="Net_Total" ColumnName="Net_Total" />
+          <ScalarProperty Name="Deduction_Total" ColumnName="Deduction_Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <NuGetPackageImportStamp>0c3f054a</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +48,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NReco.PdfGenerator">
+      <HintPath>C:\Users\Admin\Downloads\Compressed\pdf_generator_1.1_free\NReco.PdfGenerator.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -150,6 +154,7 @@
     <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Salary.js" />
+    <Content Include="Views\Salary\SalarySlipHtml.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
@@ -184,6 +189,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="SalaryExcelFiles\" />
+    <Folder Include="SalaryPDFFiles\" />
     <Folder Include="Views\SalaryBase\" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +223,13 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\Select.Pdf.16.3.0.0\build\Select.Pdf.targets" Condition="Exists('..\packages\Select.Pdf.16.3.0.0\build\Select.Pdf.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Select.Pdf.16.3.0.0\build\Select.Pdf.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Select.Pdf.16.3.0.0\build\Select.Pdf.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

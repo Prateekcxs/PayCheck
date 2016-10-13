@@ -13,6 +13,8 @@ namespace PayrollSystem.Models
 
         public Employee Employee { get; set; }
 
+        public List<GetEmployeeByEmailAddress_Result> GetEmployeeByEmailAddress { get; set; }
+        public List<GetSalaryOfEmployeeByEmployeeIdMonthYear_Result> GetSalaryOfEmployeeByEmployeeIdMonthYear { get; set; }
         public string SignUpMessage { get; set; }
         public string LoginMessage { get; set; }
 
@@ -21,5 +23,6 @@ namespace PayrollSystem.Models
         public List<string> Year { get; set; }
 
         public List<GetMonthListByYear_Result> GetMonthListByYear { get; set; }
+        
     }
 }
