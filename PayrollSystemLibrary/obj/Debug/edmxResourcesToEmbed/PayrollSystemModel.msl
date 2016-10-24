@@ -170,6 +170,30 @@
           <ScalarProperty Name="Gross_Total" ColumnName="Gross_Total" />
           <ScalarProperty Name="Net_Total" ColumnName="Net_Total" />
           <ScalarProperty Name="Deduction_Total" ColumnName="Deduction_Total" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateSalary" FunctionName="PayrollSystemModel.Store.UpdateSalary" />
+    <FunctionImportMapping FunctionImportName="UpdateEmployee" FunctionName="PayrollSystemModel.Store.UpdateEmployee" />
+    <FunctionImportMapping FunctionImportName="GetAllEmployeeList" FunctionName="PayrollSystemModel.Store.GetAllEmployeeList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PayrollSystemModel.GetAllEmployeeList_Result">
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="PAN_no" ColumnName="PAN_no" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+          <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+          <ScalarProperty Name="EmployeePFCode" ColumnName="EmployeePFCode" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

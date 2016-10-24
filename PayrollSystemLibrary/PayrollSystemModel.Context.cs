@@ -261,5 +261,168 @@ namespace PayrollSystemLibrary
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalaryOfEmployeeByEmployeeIdMonthYear_Result>("GetSalaryOfEmployeeByEmployeeIdMonthYear", employeeIdParameter, monthIdParameter, yearParameter);
         }
+    
+        public virtual int UpdateSalary(Nullable<int> employeeId, Nullable<int> monthId, string year, string actual_basic, string actual_hra, string actual_ca, string actual_ma, string actual_ia, string actual_sa, string earning_basic, string earning_hra, string earning_ca, string earning_ma, string earning_ia, string earning_sa, string deduction_pf, string deduction_pt, string deduction_tds, Nullable<int> paid_days, Nullable<int> present_days, Nullable<int> w_off, Nullable<int> leave, Nullable<int> absent)
+        {
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("EmployeeId", employeeId) :
+                new ObjectParameter("EmployeeId", typeof(int));
+    
+            var monthIdParameter = monthId.HasValue ?
+                new ObjectParameter("MonthId", monthId) :
+                new ObjectParameter("MonthId", typeof(int));
+    
+            var yearParameter = year != null ?
+                new ObjectParameter("Year", year) :
+                new ObjectParameter("Year", typeof(string));
+    
+            var actual_basicParameter = actual_basic != null ?
+                new ObjectParameter("actual_basic", actual_basic) :
+                new ObjectParameter("actual_basic", typeof(string));
+    
+            var actual_hraParameter = actual_hra != null ?
+                new ObjectParameter("actual_hra", actual_hra) :
+                new ObjectParameter("actual_hra", typeof(string));
+    
+            var actual_caParameter = actual_ca != null ?
+                new ObjectParameter("actual_ca", actual_ca) :
+                new ObjectParameter("actual_ca", typeof(string));
+    
+            var actual_maParameter = actual_ma != null ?
+                new ObjectParameter("actual_ma", actual_ma) :
+                new ObjectParameter("actual_ma", typeof(string));
+    
+            var actual_iaParameter = actual_ia != null ?
+                new ObjectParameter("actual_ia", actual_ia) :
+                new ObjectParameter("actual_ia", typeof(string));
+    
+            var actual_saParameter = actual_sa != null ?
+                new ObjectParameter("actual_sa", actual_sa) :
+                new ObjectParameter("actual_sa", typeof(string));
+    
+            var earning_basicParameter = earning_basic != null ?
+                new ObjectParameter("earning_basic", earning_basic) :
+                new ObjectParameter("earning_basic", typeof(string));
+    
+            var earning_hraParameter = earning_hra != null ?
+                new ObjectParameter("earning_hra", earning_hra) :
+                new ObjectParameter("earning_hra", typeof(string));
+    
+            var earning_caParameter = earning_ca != null ?
+                new ObjectParameter("earning_ca", earning_ca) :
+                new ObjectParameter("earning_ca", typeof(string));
+    
+            var earning_maParameter = earning_ma != null ?
+                new ObjectParameter("earning_ma", earning_ma) :
+                new ObjectParameter("earning_ma", typeof(string));
+    
+            var earning_iaParameter = earning_ia != null ?
+                new ObjectParameter("earning_ia", earning_ia) :
+                new ObjectParameter("earning_ia", typeof(string));
+    
+            var earning_saParameter = earning_sa != null ?
+                new ObjectParameter("earning_sa", earning_sa) :
+                new ObjectParameter("earning_sa", typeof(string));
+    
+            var deduction_pfParameter = deduction_pf != null ?
+                new ObjectParameter("deduction_pf", deduction_pf) :
+                new ObjectParameter("deduction_pf", typeof(string));
+    
+            var deduction_ptParameter = deduction_pt != null ?
+                new ObjectParameter("deduction_pt", deduction_pt) :
+                new ObjectParameter("deduction_pt", typeof(string));
+    
+            var deduction_tdsParameter = deduction_tds != null ?
+                new ObjectParameter("deduction_tds", deduction_tds) :
+                new ObjectParameter("deduction_tds", typeof(string));
+    
+            var paid_daysParameter = paid_days.HasValue ?
+                new ObjectParameter("paid_days", paid_days) :
+                new ObjectParameter("paid_days", typeof(int));
+    
+            var present_daysParameter = present_days.HasValue ?
+                new ObjectParameter("present_days", present_days) :
+                new ObjectParameter("present_days", typeof(int));
+    
+            var w_offParameter = w_off.HasValue ?
+                new ObjectParameter("w_off", w_off) :
+                new ObjectParameter("w_off", typeof(int));
+    
+            var leaveParameter = leave.HasValue ?
+                new ObjectParameter("leave", leave) :
+                new ObjectParameter("leave", typeof(int));
+    
+            var absentParameter = absent.HasValue ?
+                new ObjectParameter("absent", absent) :
+                new ObjectParameter("absent", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateSalary", employeeIdParameter, monthIdParameter, yearParameter, actual_basicParameter, actual_hraParameter, actual_caParameter, actual_maParameter, actual_iaParameter, actual_saParameter, earning_basicParameter, earning_hraParameter, earning_caParameter, earning_maParameter, earning_iaParameter, earning_saParameter, deduction_pfParameter, deduction_ptParameter, deduction_tdsParameter, paid_daysParameter, present_daysParameter, w_offParameter, leaveParameter, absentParameter);
+        }
+    
+        public virtual int UpdateEmployee(Nullable<int> employeeId, string name, string employeeCode, string password, string gender, string pAN_no, string address, string mobileNo, Nullable<int> designationId, Nullable<int> departmentId, Nullable<System.DateTime> joiningDate, Nullable<System.DateTime> terminationDate, string employeePFCode, Nullable<bool> isAdmin)
+        {
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("EmployeeId", employeeId) :
+                new ObjectParameter("EmployeeId", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var employeeCodeParameter = employeeCode != null ?
+                new ObjectParameter("EmployeeCode", employeeCode) :
+                new ObjectParameter("EmployeeCode", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var genderParameter = gender != null ?
+                new ObjectParameter("Gender", gender) :
+                new ObjectParameter("Gender", typeof(string));
+    
+            var pAN_noParameter = pAN_no != null ?
+                new ObjectParameter("PAN_no", pAN_no) :
+                new ObjectParameter("PAN_no", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var mobileNoParameter = mobileNo != null ?
+                new ObjectParameter("MobileNo", mobileNo) :
+                new ObjectParameter("MobileNo", typeof(string));
+    
+            var designationIdParameter = designationId.HasValue ?
+                new ObjectParameter("DesignationId", designationId) :
+                new ObjectParameter("DesignationId", typeof(int));
+    
+            var departmentIdParameter = departmentId.HasValue ?
+                new ObjectParameter("DepartmentId", departmentId) :
+                new ObjectParameter("DepartmentId", typeof(int));
+    
+            var joiningDateParameter = joiningDate.HasValue ?
+                new ObjectParameter("JoiningDate", joiningDate) :
+                new ObjectParameter("JoiningDate", typeof(System.DateTime));
+    
+            var terminationDateParameter = terminationDate.HasValue ?
+                new ObjectParameter("TerminationDate", terminationDate) :
+                new ObjectParameter("TerminationDate", typeof(System.DateTime));
+    
+            var employeePFCodeParameter = employeePFCode != null ?
+                new ObjectParameter("EmployeePFCode", employeePFCode) :
+                new ObjectParameter("EmployeePFCode", typeof(string));
+    
+            var isAdminParameter = isAdmin.HasValue ?
+                new ObjectParameter("IsAdmin", isAdmin) :
+                new ObjectParameter("IsAdmin", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateEmployee", employeeIdParameter, nameParameter, employeeCodeParameter, passwordParameter, genderParameter, pAN_noParameter, addressParameter, mobileNoParameter, designationIdParameter, departmentIdParameter, joiningDateParameter, terminationDateParameter, employeePFCodeParameter, isAdminParameter);
+        }
+    
+        public virtual ObjectResult<GetAllEmployeeList_Result> GetAllEmployeeList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllEmployeeList_Result>("GetAllEmployeeList");
+        }
     }
 }

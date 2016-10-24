@@ -8,8 +8,97 @@
 
 @using (Html.BeginForm("Index", "SalaryAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-
+    if (Model.Message != null)
+    {
+        @Html.Label(Model.Message, new { @style = "color:red;" });
+    }
+    <br />
+    <br />
     <input type="file" name="file" />
-    <input type="submit" value="OK" />
+    <input type="submit" name="submit" value="Upload" class="btn btn-primary" />
+    <br /><br />
+
+
+    @Html.ActionLink("List of Employees","EmployeeList")
+    <br />
+
+    @Html.DropDownList("SalaryYearAdmin", new SelectList(Model.Year, "", ""), "Please select Year")
+    @Html.DropDownList("Month", new SelectList(Model.GetAllMonths, "MonthId", "MonthName"), "Please select Month")
+    <input type="submit" name="submit" value="Search" class="btn btn-primary" />
+
+
+
+
+    <br />
+    if (Model.GetSalaryOfEmployeeByEmployeeIdMonthYear != null)
+    {
+        <div style="overflow-x:scroll;">
+            <table id="tbl_salary" style="color:#ffffff;width:200%;">
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Month</th>
+                    <th>Year</th>
+                    <th>Actual basic</th>
+                    <th>Actual hra</th>
+                    <th>Actual ca</th>
+                    <th>Actual ma</th>
+                    <th>Actual ia</th>
+                    <th>Actual sa</th>
+                    <th>Earning basic</th>
+                    <th>Earning hra</th>
+                    <th>Earning ca</th>
+                    <th>Earning ma</th>
+                    <th>Earning ia</th>
+                    <th>Earning sa</th>
+                    <th>PF</th>
+                    <th>PT</th>
+                    <th>TD</th>
+                    <th>Paid days</th>
+                    <th>Present days</th>
+                    <th>W/off</th>
+                    <th>Leave</th>
+                    <th>Absent</th>
+                </tr>
+                @if (Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.Count > 0)
+                {
+                    foreach (var emp_rec in @Model.GetSalaryOfEmployeeByEmployeeIdMonthYear)
+                    {
+                        <tr>
+                            <td>@emp_rec.EmployeeName</td>
+                            <td>@emp_rec.MonthName</td>
+                            <td>@emp_rec.Year</td>
+                            <td>@emp_rec.actual_basic</td>
+                            <td>@emp_rec.actual_hra</td>
+                            <td>@emp_rec.actual_ca</td>
+                            <td>@emp_rec.actual_ma</td>
+                            <td>@emp_rec.actual_ia</td>
+                            <td>@emp_rec.actual_sa</td>
+                            <td>@emp_rec.earning_basic</td>
+                            <td>@emp_rec.earning_hra</td>
+                            <td>@emp_rec.earning_ca</td>
+                            <td>@emp_rec.earning_ma</td>
+                            <td>@emp_rec.earning_ia</td>
+                            <td>@emp_rec.earning_sa</td>
+                            <td>@emp_rec.deduction_pf</td>
+                            <td>@emp_rec.deduction_pt</td>
+                            <td>@emp_rec.deduction_tds</td>
+                            <td>@emp_rec.paid_days</td>
+                            <td>@emp_rec.present_days</td>
+                            <td>@emp_rec.w_off</td>
+                            <td>@emp_rec.leave</td>
+                            <td>@emp_rec.absent</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="23">No record found for this / current month.</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
 }
+
 

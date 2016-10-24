@@ -59,6 +59,9 @@
     <Compile Include="Employee.cs">
       <DependentUpon>PayrollSystemModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetAllEmployeeList_Result.cs">
+      <DependentUpon>PayrollSystemModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetAllMonths_Result.cs">
       <DependentUpon>PayrollSystemModel.tt</DependentUpon>
     </Compile>

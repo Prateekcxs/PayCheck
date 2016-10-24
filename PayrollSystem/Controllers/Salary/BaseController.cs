@@ -11,13 +11,18 @@ namespace PayrollSystem.Controllers.Salary
     {
         public PayrollSystemEntities db = new PayrollSystemEntities();
 
-        public Employee emp = new Employee();
         public ActionResult Logout()
         {
             Session.Remove("user");
+            Session.Remove("InAdminSection");
+
             return RedirectToAction("../Salary/");
         }
         public ActionResult LoggedInNavigation()
+        {
+            return PartialView();
+        }
+        public ActionResult WelcomeHeader()
         {
             return PartialView();
         }
@@ -32,6 +37,38 @@ namespace PayrollSystem.Controllers.Salary
                 viewResult.View.Render(viewContext, sw);
                 viewResult.ViewEngine.ReleaseView(ControllerContext, viewResult.View);
                 return sw.GetStringBuilder().ToString();
+            }
+        }
+
+        public bool ValidateLogin()
+        {
+            if (Session["user"] != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool ValidateAdmin()
+        {
+            if (ValidateLogin())
+            {
+                List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result> lst = (List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result>)(Session["user"]);
+                if (lst.FirstOrDefault().IsAdmin == true)
+                {                    
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
             }
         }
     }

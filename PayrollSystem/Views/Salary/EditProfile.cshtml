@@ -1,0 +1,77 @@
+﻿@model PayrollSystem.Models.SalaryClass
+
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Update your Profile</h2>
+
+@using (Html.BeginForm("EditProfile", "Salary", FormMethod.Post))
+{
+    Html.RenderPartial("WelcomeHeader");
+    for (int i = 0; i < Model.GetEmployeeByEmailAddress.Count; i++)
+    {
+    @Html.HiddenFor(model => model.GetEmployeeByEmailAddress[i].EmployeeId)
+    @Html.HiddenFor(model => model.GetEmployeeByEmailAddress[i].IsAdmin)
+
+    <div class="form-wrap">
+        <div class="tab-content" style="width:50%;">
+            @if (Model.Message != null)
+            {
+                @Html.Label(Model.Message, new { @style = "color:red;" })
+            }
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label for="username">Full Name</label>
+                    @Html.EditorFor(model => model.GetEmployeeByEmailAddress[i].Name, new { htmlAttributes = new { @class = "form-control", @required = "required", @pattern = "[a-zA-Z ]+" } })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label for="username">Username or Email</label>
+                    @Html.TextBoxFor(model => model.GetEmployeeByEmailAddress[i].EmailAddress, new { @class = "form-control", @type = "email", @required = "required", @readonly = true })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label for="password">Password</label>
+                    @Html.PasswordFor(model => model.GetEmployeeByEmailAddress[i].Password, new { @class = "form-control", @required = "required" } )
+                </div>
+            </div>
+            <div class="row form-group" style="display:none;">
+                <div class="col-md-12">
+                    <label for="password2">Repeat Password</label>
+                    <input type="password" class="form-control" id="password2">
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label for="username">Mobile Number</label>
+                    @Html.EditorFor(model => model.GetEmployeeByEmailAddress[i].MobileNo, new { htmlAttributes = new { @class = "form-control", @required = "required", @pattern = "^[0-9]*$" } })
+                </div>
+            </div>
+
+
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label for="username">PAN Number</label>
+                    @Html.EditorFor(model => model.GetEmployeeByEmailAddress[i].PAN_no, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <input type="submit" name="submit" class="btn btn-primary" value="Update">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    }
+}
+
+<div>
+    @Html.ActionLink("Back", "GeneratePaySlip")
+</div>

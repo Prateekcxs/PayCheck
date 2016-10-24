@@ -111,6 +111,7 @@
     <Parameter Name="leave" Type="int" Mode="In" />
     <Parameter Name="absent" Type="int" Mode="In" />
   </Function>
+  <Function Name="GetAllEmployeeList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="GetAllMonths" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="GetAvailableMonthList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="year" Type="nvarchar" Mode="In" />
@@ -132,6 +133,47 @@
     <Parameter Name="Year" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="GetYearList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmployeeId" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="EmployeeCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+    <Parameter Name="PAN_no" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="MobileNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="DesignationId" Type="int" Mode="In" />
+    <Parameter Name="DepartmentId" Type="int" Mode="In" />
+    <Parameter Name="JoiningDate" Type="date" Mode="In" />
+    <Parameter Name="TerminationDate" Type="date" Mode="In" />
+    <Parameter Name="EmployeePFCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsAdmin" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UpdateSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmployeeId" Type="int" Mode="In" />
+    <Parameter Name="MonthId" Type="int" Mode="In" />
+    <Parameter Name="Year" Type="nvarchar" Mode="In" />
+    <Parameter Name="actual_basic" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="actual_hra" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="actual_ca" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="actual_ma" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="actual_ia" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="actual_sa" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="earning_basic" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="earning_hra" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="earning_ca" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="earning_ma" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="earning_ia" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="earning_sa" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="deduction_pf" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="deduction_pt" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="deduction_tds" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="paid_days" Type="int" Mode="In" />
+    <Parameter Name="present_days" Type="int" Mode="In" />
+    <Parameter Name="w_off" Type="int" Mode="In" />
+    <Parameter Name="leave" Type="int" Mode="In" />
+    <Parameter Name="absent" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="PayrollSystemModelStoreContainer">
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />

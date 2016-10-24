@@ -5,25 +5,36 @@
 }
 
 <div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
+
+    @{Html.RenderPartial("WelcomeHeader");}
+
+    <a href="EditProfile" style="text-align:left !important;">Edit Profile</a>
+    <br />
+    <br />
+    @if (Model.Message != null)
+    {
+        @Html.Label(Model.Message, new { @style = "color:red;" })
+    }
+
     <span class="intro-text-small">Select months to generate payslips</span>
 
 
-        @using (Html.BeginForm("GeneratePaySlip", "Salary",FormMethod.Post, new { @id = "GeneratePaySlip" }))
+    @using (Html.BeginForm("GeneratePaySlip", "Salary", FormMethod.Post, new { @id = "GeneratePaySlip" }))
+    {
+       
+        @Html.DropDownList("SalaryYear", new SelectList(Model.Year, "", ""), "Please select Year")
+        @Html.Hidden("SelectedYear")
+        <br />
+        if (ViewData["Message"] != null)
         {
-            
-            
-            
-            @Html.DropDownList("SalaryYear", new SelectList(Model.Year, "", ""), "Please select Year")
-            @Html.Hidden("SelectedYear")
-            <br />
-
-
-            <div id="MonthList"></div>
-
-    <input type="submit" value="Generate payslip" name="btnSubmit" id="BtnGeneratePaySlip" style="display:none;" />
-
+            @ViewData["Message"]
         }
 
+        <div id="MonthList"></div>
 
-            </div>
+        <input type="submit" value="Generate payslip" name="btnSubmit" id="BtnGeneratePaySlip" class="btn btn-primary" style="display:none;" />
 
+    }
+
+
+</div>

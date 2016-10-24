@@ -15,14 +15,15 @@ namespace PayrollSystem.Models
 
         public List<GetEmployeeByEmailAddress_Result> GetEmployeeByEmailAddress { get; set; }
         public List<GetSalaryOfEmployeeByEmployeeIdMonthYear_Result> GetSalaryOfEmployeeByEmployeeIdMonthYear { get; set; }
-        public string SignUpMessage { get; set; }
-        public string LoginMessage { get; set; }
+        public string Message { get; set; }
 
         public List<GetAllMonths_Result> GetAllMonths { get; set; }
 
         public List<string> Year { get; set; }
 
         public List<GetMonthListByYear_Result> GetMonthListByYear { get; set; }
+
+        public List<GetAllEmployeeList_Result> GetAllEmployeeList { get; set; }
         
     }
 }

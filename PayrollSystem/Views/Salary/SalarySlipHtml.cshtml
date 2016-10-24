@@ -24,8 +24,8 @@
         }
 
         .tableizer-table th {
-            background-color: #104E8B;
-            color: #FFF;
+            background-color: cyan;
+            color: #000000;
             font-weight: bold;
         }
     </style>
@@ -35,8 +35,6 @@
         <thead>
             <tr class="tableizer-firstrow">
                 <th>CYNEXIS SOLUTIONS PVT. LTD.</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
                 <th>&nbsp;</th>
@@ -52,23 +50,17 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Name               : @Model.GetEmployeeByEmailAddress.FirstOrDefault().Name</td>
+                <td>PF CODE: @Model.GetEmployeeByEmailAddress.FirstOrDefault().EmployeePFCode</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>Name               :</td>
-                <td>&nbsp;</td>
-                <td>@Model.GetEmployeeByEmailAddress.FirstOrDefault().Name</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>PF CODE:</td>
-                <td>@Model.GetEmployeeByEmailAddress.FirstOrDefault().EmployeePFCode</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>Empl. Code      :</td>
-                <td>&nbsp;</td>
-                <td>@Model.GetEmployeeByEmailAddress.FirstOrDefault().EmployeeCode</td>
+                <td>Empl. Code      : @Model.GetEmployeeByEmailAddress.FirstOrDefault().EmployeeCode</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -77,101 +69,78 @@
             </tr>
             <tr>
                 <td>Paid days        : @Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().paid_days</td>
-                <td>&nbsp;</td>
                 <td>Present Days : @Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().present_days    W / off : @Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().w_off</td>
                 <td>&nbsp;</td>
                 <td>Leave : @Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().leave       Absent :@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().absent</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>Actual (Rs.)</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>Earnings (Rs.)</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>Deductions (Rs.)</td>
-                <td>&nbsp;</td>
+                <td colspan="2" style="background-color:yellow;">Actual (Rs.)</td>
+                <td colspan="2" style="background-color:yellow;">Earnings (Rs.)</td>
+                <td colspan="2" style="background-color:yellow;">Deductions (Rs.)</td>
             </tr>
             <tr>
                 <td>Basic </td>
-                <td>&nbsp;</td>
                 <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().actual_basic</td>
                 <td>Basic </td>
                 <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().earning_basic</td>
-                <td>&nbsp;</td>
                 <td>P.F</td>
                 <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().deduction_pf</td>
             </tr>
             <tr>
                 <td>House Rent Allowance</td>
-                <td>&nbsp;</td>
                 <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().actual_hra</td>
                 <td>House Rent Allowance</td>
                 <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().earning_hra</td>
-                <td>&nbsp;</td>
                 <td>P.T</td>
                 <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().deduction_pt</td>
             </tr>
             <tr>
                 <td>Conveyance Allowance</td>
-                <td>&nbsp;</td>
                 <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().actual_ca</td>
                 <td>Conveyance Allowance</td>
                 <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().earning_ca</td>
-                <td>&nbsp;</td>
                 <td>TDS</td>
                 <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().deduction_tds</td>
             </tr>
             <tr>
                 <td>Medical Allowance</td>
-                <td>&nbsp;</td>
                 <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().actual_ma</td>
                 <td>Medical Allowance</td>
                 <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().earning_ma</td>
-                <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td></td>
             </tr>
             <tr>
                 <td>Internet Allowance</td>
-                <td>&nbsp;</td>
                 <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().actual_ia</td>
                 <td>Internet Allowance</td>
                 <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().earning_ia</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>Special Allowance</td>
-                <td>&nbsp;</td>
                 <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().actual_sa</td>
                 <td>Special Allowance</td>
                 <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().earning_sa</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>GROSS  (Rs.) </td>
-                <td>&nbsp;</td>
-                <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().Gross</td>
-                <td>Total Gross (Rs.) </td>
-                <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().Gross_Total</td>
-                <td>&nbsp;</td>
-                <td>Total Deduct.(Rs.)</td>
-                <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().Deduction_Total</td>
+                <td style="background-color:yellow;">GROSS  (Rs.) </td>
+                <td style="background-color:yellow;">@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().Gross</td>
+                <td style="background-color:yellow;">Total Gross (Rs.) </td>
+                <td style="background-color:yellow;">@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().Gross_Total</td>
+                <td style="background-color:yellow;">Total Deduct.(Rs.)</td>
+                <td style="background-color:yellow;">@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().Deduction_Total</td>
             </tr>
             <tr>
                 <td>Net Salary Rs.</td>
+                <td style="background-color: cyan;">@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().Net_Total</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>@Model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().Net_Total</td>
                 <td>&nbsp;</td>
                 <td></td>
             </tr>

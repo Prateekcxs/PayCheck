@@ -9,6 +9,8 @@ using System.IO;
 using System.Configuration;
 using System.Data.OleDb;
 using System.Data;
+using PayrollSystem.Models;
+using PayrollSystemLibrary;
 
 namespace PayrollSystem.Controllers.SalaryAdmin
 {
@@ -16,12 +18,17 @@ namespace PayrollSystem.Controllers.SalaryAdmin
     {
         public ActionResult Index()
         {
-            if (Session["user"] != null)
+            if (ValidateLogin())
             {
-                List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result> lst = (List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result>)(Session["user"]);
-                if (lst.FirstOrDefault().IsAdmin == true)
+                if (ValidateAdmin())
                 {
-                    return View();
+                    SalaryClass model = new SalaryClass();
+                    model.Year = db.GetYearList().ToList();
+                    model.GetAllMonths = db.GetAllMonths().ToList();
+
+                    Session["InAdminSection"] = "true";
+
+                    return View(model);
                 }
                 return RedirectToAction("../Salary/GeneratePaySlip/");
             }
@@ -32,20 +39,59 @@ namespace PayrollSystem.Controllers.SalaryAdmin
         }
 
         [HttpPost]
-        public ActionResult Index(HttpPostedFileBase file)
+        public ActionResult Index(HttpPostedFileBase file, FormCollection form)
         {
-            if (file != null && file.ContentLength > 0)
+            SalaryClass model = new SalaryClass();
+
+            model.Year = db.GetYearList().ToList();
+            model.GetAllMonths = db.GetAllMonths().ToList();
+
+
+            if (ValidateAdmin())
             {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["SalaryExcelFolderPath"]), fileName);
-                string Extension = Path.GetExtension(file.FileName);
-                file.SaveAs(path);
-                Import_To_Grid(path, Extension);
+                if (form["submit"].ToString() == "Upload")
+                {
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath(ConfigurationManager.AppSettings["SalaryExcelFolderPath"]), fileName);
+                        string Extension = Path.GetExtension(file.FileName);
+                        file.SaveAs(path);
+
+                        model.Message = Load_excel_to_db(path, Extension);
+
+                        model.GetSalaryOfEmployeeByEmployeeIdMonthYear = db.GetSalaryOfEmployeeByEmployeeIdMonthYear(null, DateTime.Now.Month, DateTime.Now.Year.ToString()).ToList();                       
+                    }
+
+                }
+                else if (form["submit"].ToString() == "Search")
+                {
+                    string month = form["Month"].ToString();
+                    string year = form["SalaryYearAdmin"].ToString();
+
+                    if (month == "" || year == "")
+                    {
+                        model.GetSalaryOfEmployeeByEmployeeIdMonthYear = db.GetSalaryOfEmployeeByEmployeeIdMonthYear(null, DateTime.Now.Month, DateTime.Now.Year.ToString()).ToList();
+                    }
+                    else
+                    {
+                        model.GetSalaryOfEmployeeByEmployeeIdMonthYear = db.GetSalaryOfEmployeeByEmployeeIdMonthYear(null, int.Parse(month), year).ToList();
+
+                    }
+
+
+                }
+
+                return View(model);
+
             }
-            return RedirectToAction("Index");
+            else
+            {
+                return RedirectToAction("../Salary/");
+            }
         }
 
-        private void Import_To_Grid(string FilePath, string Extension)
+        private string Load_excel_to_db(string FilePath, string Extension)
         {
             string conStr = "";
             switch (Extension)
@@ -79,25 +125,53 @@ namespace PayrollSystem.Controllers.SalaryAdmin
             oda.SelectCommand = cmdExcel;
             oda.Fill(dt);
 
+            connExcel.Close();
             /////////////
-
-            foreach (DataRow row in dt.Rows)
+            try
             {
-                db.AddSalary(int.Parse(row["EmployeeId"].ToString().Trim()), int.Parse(row["MonthId"].ToString().Trim()), row["year"].ToString().Trim(), row["actual_basic"].ToString().Trim(), 
-                    row["actual_hra"].ToString().Trim(), row["actual_ca"].ToString().Trim(),
-                    row["actual_ma"].ToString().Trim(), row["actual_ia"].ToString().Trim(), row["actual_sa"].ToString().Trim(),
-                    row["earning_basic"].ToString().Trim(), row["earning_hra"].ToString().Trim(), row["earning_ca"].ToString().Trim(), row["earning_ma"].ToString().Trim(), row["earning_ia"].ToString().Trim(),
-                    row["earning_sa"].ToString().Trim(), row["deduction_pf"].ToString().Trim(), row["deduction_pt"].ToString().Trim(),
-                    row["deduction_tds"].ToString().Trim(), int.Parse(row["paid_days"].ToString().Trim()), int.Parse(row["present_days"].ToString().Trim()), int.Parse(row["w_off"].ToString().Trim()),
-                    int.Parse(row["leave"].ToString().Trim()), int.Parse(row["absent"].ToString().Trim()));
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (db.GetSalaryOfEmployeeByEmployeeIdMonthYear(int.Parse(row["EmployeeId"].ToString().Trim()), int.Parse(row["MonthId"].ToString().Trim()), row["year"].ToString().Trim()).Count() > 0)
+                    {
+                        db.UpdateSalary(int.Parse(row["EmployeeId"].ToString().Trim()), int.Parse(row["MonthId"].ToString().Trim()), row["year"].ToString().Trim(), row["actual_basic"].ToString().Trim(),
+                            row["actual_hra"].ToString().Trim(), row["actual_ca"].ToString().Trim(),
+                            row["actual_ma"].ToString().Trim(), row["actual_ia"].ToString().Trim(), row["actual_sa"].ToString().Trim(),
+                            row["earning_basic"].ToString().Trim(), row["earning_hra"].ToString().Trim(), row["earning_ca"].ToString().Trim(), row["earning_ma"].ToString().Trim(), row["earning_ia"].ToString().Trim(),
+                            row["earning_sa"].ToString().Trim(), row["deduction_pf"].ToString().Trim(), row["deduction_pt"].ToString().Trim(),
+                            row["deduction_tds"].ToString().Trim(), int.Parse(row["paid_days"].ToString().Trim()), int.Parse(row["present_days"].ToString().Trim()), int.Parse(row["w_off"].ToString().Trim()),
+                            int.Parse(row["leave"].ToString().Trim()), int.Parse(row["absent"].ToString().Trim()));
+                    }
+                    else
+                    {
 
+                        db.AddSalary(int.Parse(row["EmployeeId"].ToString().Trim()), int.Parse(row["MonthId"].ToString().Trim()), row["year"].ToString().Trim(), row["actual_basic"].ToString().Trim(),
+                            row["actual_hra"].ToString().Trim(), row["actual_ca"].ToString().Trim(),
+                            row["actual_ma"].ToString().Trim(), row["actual_ia"].ToString().Trim(), row["actual_sa"].ToString().Trim(),
+                            row["earning_basic"].ToString().Trim(), row["earning_hra"].ToString().Trim(), row["earning_ca"].ToString().Trim(), row["earning_ma"].ToString().Trim(), row["earning_ia"].ToString().Trim(),
+                            row["earning_sa"].ToString().Trim(), row["deduction_pf"].ToString().Trim(), row["deduction_pt"].ToString().Trim(),
+                            row["deduction_tds"].ToString().Trim(), int.Parse(row["paid_days"].ToString().Trim()), int.Parse(row["present_days"].ToString().Trim()), int.Parse(row["w_off"].ToString().Trim()),
+                            int.Parse(row["leave"].ToString().Trim()), int.Parse(row["absent"].ToString().Trim()));
+                    }
+
+                }
+                return "Excel data uploaded successfully";
+            }
+            catch(Exception ex)
+            {
+                return "Invalid file";
             }
 
             /////////////
 
-            connExcel.Close();
         }
 
+        public ActionResult EmployeeList()
+        {
+            SalaryClass model = new SalaryClass();
 
+            model.GetAllEmployeeList = db.GetAllEmployeeList().ToList();
+
+            return View(model);
+        }
     }
 }

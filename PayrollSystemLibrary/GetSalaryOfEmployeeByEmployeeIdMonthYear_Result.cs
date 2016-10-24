@@ -14,7 +14,7 @@ namespace PayrollSystemLibrary
     public partial class GetSalaryOfEmployeeByEmployeeIdMonthYear_Result
     {
         public int SalaryId { get; set; }
-        public Nullable<int> EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
         public int MonthId { get; set; }
         public string Year { get; set; }
         public string actual_basic { get; set; }
@@ -42,5 +42,6 @@ namespace PayrollSystemLibrary
         public Nullable<int> Gross_Total { get; set; }
         public Nullable<int> Net_Total { get; set; }
         public Nullable<int> Deduction_Total { get; set; }
+        public string EmployeeName { get; set; }
     }
 }

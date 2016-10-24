@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\Projects\PayCheckPublished</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>10/06/2016 15:46:49</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>10/06/2016 15:46:49</publishTime>
+    </File>
+    <File Include="bin/NReco.PdfGenerator.dll">
+      <publishTime>02/03/2016 16:10:04</publishTime>
+    </File>
+    <File Include="bin/PayrollSystem.dll">
+      <publishTime>10/13/2016 19:03:51</publishTime>
+    </File>
+    <File Include="bin/PayrollSystemLibrary.dll">
+      <publishTime>10/13/2016 19:03:51</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>10/06/2016 12:28:10</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>10/06/2016 12:28:10</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>10/06/2016 12:28:10</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Deployment.dll">
+      <publishTime>10/06/2016 12:28:10</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.dll">
+      <publishTime>10/06/2016 12:28:10</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Razor.dll">
+      <publishTime>10/06/2016 12:28:10</publishTime>
+    </File>
+    <File Include="Content/animate.css">
+      <publishTime>08/08/2016 09:43:00</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>05/23/2016 08:48:30</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css.map">
+      <publishTime>05/23/2016 08:48:30</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>10/06/2016 12:38:48</publishTime>
+    </File>
+    <File Include="Content/icomoon.css">
+      <publishTime>08/15/2016 11:47:04</publishTime>
+    </File>
+    <File Include="Content/magnific-popup.css">
+      <publishTime>08/15/2016 11:56:52</publishTime>
+    </File>
+    <File Include="Content/owl.carousel.min.css">
+      <publishTime>08/08/2016 05:52:34</publishTime>
+    </File>
+    <File Include="Content/owl.theme.default.min.css">
+      <publishTime>08/08/2016 05:54:54</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>10/06/2016 12:38:47</publishTime>
+    </File>
+    <File Include="Content/style.css">
+      <publishTime>10/07/2016 18:15:33</publishTime>
+    </File>
+    <File Include="Content/style.css.map">
+      <publishTime>08/29/2016 22:15:32</publishTime>
+    </File>
+    <File Include="Content/themify-icons.css">
+      <publishTime>08/21/2016 18:21:30</publishTime>
+    </File>
+    <File Include="fonts/bootstrap/glyphicons-halflings-regular.eot">
+      <publishTime>06/17/2015 00:29:50</publishTime>
+    </File>
+    <File Include="fonts/bootstrap/glyphicons-halflings-regular.svg">
+      <publishTime>06/17/2015 00:29:50</publishTime>
+    </File>
+    <File Include="fonts/bootstrap/glyphicons-halflings-regular.ttf">
+      <publishTime>06/17/2015 00:29:50</publishTime>
+    </File>
+    <File Include="fonts/bootstrap/glyphicons-halflings-regular.woff">
+      <publishTime>06/17/2015 00:29:50</publishTime>
+    </File>
+    <File Include="fonts/bootstrap/glyphicons-halflings-regular.woff2">
+      <publishTime>06/17/2015 00:29:50</publishTime>
+    </File>
+    <File Include="fonts/icomoon/icomoon.eot">
+      <publishTime>08/06/2016 18:44:08</publishTime>
+    </File>
+    <File Include="fonts/icomoon/icomoon.svg">
+      <publishTime>08/06/2016 18:44:08</publishTime>
+    </File>
+    <File Include="fonts/icomoon/icomoon.ttf">
+      <publishTime>08/06/2016 18:44:08</publishTime>
+    </File>
+    <File Include="fonts/icomoon/icomoon.woff">
+      <publishTime>08/06/2016 18:44:08</publishTime>
+    </File>
+    <File Include="fonts/themify-icons/themify.eot">
+      <publishTime>05/23/2014 21:31:42</publishTime>
+    </File>
+    <File Include="fonts/themify-icons/themify.svg">
+      <publishTime>05/23/2014 21:31:42</publishTime>
+    </File>
+    <File Include="fonts/themify-icons/themify.ttf">
+      <publishTime>05/23/2014 21:31:42</publishTime>
+    </File>
+    <File Include="fonts/themify-icons/themify.woff">
+      <publishTime>05/23/2014 21:31:42</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>10/06/2016 12:28:10</publishTime>
+    </File>
+    <File Include="Images/img_1.jpg">
+      <publishTime>08/29/2016 22:46:10</publishTime>
+    </File>
+    <File Include="Images/img_2.jpg">
+      <publishTime>08/29/2016 22:46:10</publishTime>
+    </File>
+    <File Include="Images/img_3.jpg">
+      <publishTime>08/29/2016 22:46:10</publishTime>
+    </File>
+    <File Include="Images/img_4.jpg">
+      <publishTime>08/29/2016 22:46:08</publishTime>
+    </File>
+    <File Include="Images/img_5.jpg">
+      <publishTime>08/29/2016 22:46:08</publishTime>
+    </File>
+    <File Include="Images/img_6.jpg">
+      <publishTime>08/29/2016 22:46:08</publishTime>
+    </File>
+    <File Include="Images/img_bg_1.jpg">
+      <publishTime>08/29/2016 22:46:06</publishTime>
+    </File>
+    <File Include="Images/img_bg_2.jpg">
+      <publishTime>08/29/2016 22:46:06</publishTime>
+    </File>
+    <File Include="Images/img_bg_3.jpg">
+      <publishTime>08/29/2016 22:46:06</publishTime>
+    </File>
+    <File Include="Images/iphone.png">
+      <publishTime>08/26/2016 08:51:38</publishTime>
+    </File>
+    <File Include="Images/loader.gif">
+      <publishTime>08/14/2016 07:59:30</publishTime>
+    </File>
+    <File Include="Images/logo.png">
+      <publishTime>10/06/2016 13:22:30</publishTime>
+    </File>
+    <File Include="Images/macbook.png">
+      <publishTime>08/28/2016 19:33:54</publishTime>
+    </File>
+    <File Include="Images/person_1.jpg">
+      <publishTime>08/29/2016 22:46:04</publishTime>
+    </File>
+    <File Include="Images/person_2.jpg">
+      <publishTime>08/29/2016 22:46:04</publishTime>
+    </File>
+    <File Include="Images/person_3.jpg">
+      <publishTime>08/29/2016 22:46:02</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>10/13/2016 15:34:51</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>10/06/2016 12:38:48</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>06/17/2015 00:29:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>10/06/2016 12:38:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>10/06/2016 12:38:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>10/06/2016 12:38:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery.countTo.js">
+      <publishTime>08/15/2016 12:00:36</publishTime>
+    </File>
+    <File Include="Scripts/jquery.easing.1.3.js">
+      <publishTime>09/25/2015 14:57:42</publishTime>
+    </File>
+    <File Include="Scripts/jquery.magnific-popup.min.js">
+      <publishTime>02/02/2016 13:37:56</publishTime>
+    </File>
+    <File Include="Scripts/jquery.min.js">
+      <publishTime>04/29/2015 00:03:04</publishTime>
+    </File>
+    <File Include="Scripts/jquery.stellar.min.js">
+      <publishTime>01/31/2016 12:36:46</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.js">
+      <publishTime>10/12/2016 12:37:43</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.min.js">
+      <publishTime>10/12/2016 12:37:43</publishTime>
+    </File>
+    <File Include="Scripts/jquery.waypoints.min.js">
+      <publishTime>09/25/2015 14:58:42</publishTime>
+    </File>
+    <File Include="Scripts/magnific-popup-options.js">
+      <publishTime>02/03/2016 23:10:16</publishTime>
+    </File>
+    <File Include="Scripts/main.js">
+      <publishTime>08/29/2016 21:00:50</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>10/06/2016 12:38:51</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.min.js">
+      <publishTime>09/27/2015 04:45:52</publishTime>
+    </File>
+    <File Include="Scripts/owl.carousel.min.js">
+      <publishTime>08/08/2016 05:56:02</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>09/28/2015 01:20:34</publishTime>
+    </File>
+    <File Include="Scripts/Salary.js">
+      <publishTime>10/12/2016 18:13:08</publishTime>
+    </File>
+    <File Include="Views/Salary/GeneratePaySlip.cshtml">
+      <publishTime>10/12/2016 18:10:18</publishTime>
+    </File>
+    <File Include="Views/Salary/Index.cshtml">
+      <publishTime>10/07/2016 16:02:37</publishTime>
+    </File>
+    <File Include="Views/Salary/MonthList.cshtml">
+      <publishTime>10/12/2016 18:25:51</publishTime>
+    </File>
+    <File Include="Views/Salary/SalarySlipHtml.cshtml">
+      <publishTime>10/13/2016 16:26:46</publishTime>
+    </File>
+    <File Include="Views/SalaryAdmin/Index.cshtml">
+      <publishTime>10/10/2016 13:07:56</publishTime>
+    </File>
+    <File Include="Views/Shared/LoggedInNavigation.cshtml">
+      <publishTime>10/10/2016 12:03:42</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>10/12/2016 12:38:24</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>10/13/2016 17:17:25</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>10/06/2016 12:38:47</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>10/13/2016 19:03:52</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

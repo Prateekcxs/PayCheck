@@ -1,0 +1,136 @@
+﻿@model PayrollSystem.Models.SalaryClass
+
+@{
+    ViewBag.Title = "EmployeeList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Employee List</h2>
+
+<div>
+    <table id="tbl_employee" style="color:#ffffff;width:100%;">
+        <tr>
+
+            <th>
+               Employee Number
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.GetAllEmployeeList.FirstOrDefault().Name)
+            </th>
+
+            @*<th>
+                    @Html.DisplayNameFor(model =>model.GetAllEmployeeList.FirstOrDefault().EmployeeCode)
+                </th>*@
+
+            <th>
+                Email Address
+            </th>
+
+            @*<th>
+                    @Html.DisplayNameFor(model =>model.GetAllEmployeeList.FirstOrDefault().Password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model =>model.GetAllEmployeeList.FirstOrDefault().Gender)
+                </th>*@
+
+
+            <th>
+                PAN Number
+            </th>
+
+            @*<th>
+                    @Html.DisplayNameFor(model =>model.GetAllEmployeeList.FirstOrDefault().Address)
+                </th>*@
+
+            <th>
+                 Mobile Number
+            </th>
+
+
+            @*<th>
+                    @Html.DisplayNameFor(model =>model.GetAllEmployeeList.FirstOrDefault().DesignationId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model =>model.GetAllEmployeeList.FirstOrDefault().DepartmentId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model =>model.GetAllEmployeeList.FirstOrDefault().JoiningDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model =>model.GetAllEmployeeList.FirstOrDefault().TerminationDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model =>model.GetAllEmployeeList.FirstOrDefault().EmployeePFCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model =>model.GetAllEmployeeList.FirstOrDefault().IsAdmin)
+                </th>*@
+
+        </tr>
+
+        @foreach (var item in Model.GetAllEmployeeList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.EmployeeCode)
+                    </td>*@
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailAddress)
+                </td>
+
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>*@
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PAN_no)
+                </td>
+
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>*@
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobileNo)
+                </td>
+
+
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.DesignationId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DepartmentId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JoiningDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TerminationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeePFCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsAdmin)
+                    </td>*@
+            </tr>
+        }
+
+    </table>
+
+    <a href=" Index">Back</a>
+</div>

@@ -1,16 +1,21 @@
-﻿
+﻿@if (Session["user"] != null)
+{
+    <li><a href="~/Salary/Logout">Logout</a></li>
 
-@if (Session["user"] != null)
-{ 
-    <li><a href="Logout">Logout</a></li>
-    
     System.Collections.Generic.List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result> lst = (System.Collections.Generic.List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result>)(Session["user"]);
     if (lst.FirstOrDefault().IsAdmin == true)
     {
-        <li class="btn-cta"><a href="../SalaryAdmin/index"><span>Admin Panel</span></a></li>
+        if (Session["InAdminSection"] == null)
+        {
+            <li class="btn-cta">
+                <a href="../SalaryAdmin/index"><span>Admin Panel</span></a>
+            </li>
+        }
+        else
+        {
+            <li class="btn-cta">
+                <a href="../Salary/index"><span>Home</span></a>
+            </li>
+        }
     }
 }
-
-
-
-

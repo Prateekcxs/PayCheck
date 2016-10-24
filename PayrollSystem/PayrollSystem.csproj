@@ -136,6 +136,7 @@
     <Content Include="fonts\themify-icons\themify.eot" />
     <Content Include="fonts\themify-icons\themify.ttf" />
     <Content Include="fonts\themify-icons\themify.woff" />
+    <None Include="Properties\PublishProfiles\LocalIS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -176,9 +177,12 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Salary\Index.cshtml" />
     <Content Include="Views\Salary\GeneratePaySlip.cshtml" />
-    <Content Include="Views\Shared\LoggedInNavigation.cshtml" />
     <Content Include="Views\SalaryAdmin\Index.cshtml" />
     <Content Include="Views\Salary\MonthList.cshtml" />
+    <Content Include="Views\Shared\LoggedInNavigation.cshtml" />
+    <Content Include="Views\Salary\EditProfile.cshtml" />
+    <Content Include="Views\SalaryAdmin\EmployeeList.cshtml" />
+    <Content Include="Views\Shared\WelcomeHeader.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -190,7 +194,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="SalaryExcelFiles\" />
     <Folder Include="SalaryPDFFiles\" />
-    <Folder Include="Views\SalaryBase\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PayrollSystemLibrary\PayrollSystemLibrary.csproj">

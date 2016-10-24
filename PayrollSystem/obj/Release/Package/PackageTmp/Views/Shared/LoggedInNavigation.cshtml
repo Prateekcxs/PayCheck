@@ -1,0 +1,16 @@
+﻿
+
+@if (Session["user"] != null)
+{ 
+    <li><a href="Logout">Logout</a></li>
+    
+    System.Collections.Generic.List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result> lst = (System.Collections.Generic.List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result>)(Session["user"]);
+    if (lst.FirstOrDefault().IsAdmin == true)
+    {
+        <li class="btn-cta"><a href="../SalaryAdmin/index"><span>Admin Panel</span></a></li>
+    }
+}
+
+
+
+

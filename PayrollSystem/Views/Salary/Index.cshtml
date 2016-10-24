@@ -12,22 +12,18 @@
                         <div class="form-wrap">
                             <div class="tab">
                                 <ul class="tab-menu">
-                                    <li class="active gtco-first"><a href="#" data-tab="signup">Sign up</a></li>
-                                    <li class="gtco-second"><a href="#" data-tab="login">Login</a></li>
+                                    <li class="gtco-first"><a href="#" data-tab="signup">Sign up</a></li>
+                                    <li class="active gtco-second"><a href="#" data-tab="login">Login</a></li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div class="tab-content-inner active" data-content="signup">
+                                    <div class="tab-content-inner " data-content="signup">
                                        @using (Html.BeginForm("Index", "Salary"))
                                        {
-                                           if (Model.SignUpMessage != null)
-                                           {
-                                                @Html.Label(Model.SignUpMessage, new { @style = "color:red;" })
-                                           }
 
                                             <div class="row form-group">
                                                 <div class="col-md-12">
                                                     <label for="username">Full Name</label>
-                                                    @Html.EditorFor(model => model.Employee.Name, new { htmlAttributes = new { @class = "form-control", @required="required" } })
+                                                    @Html.EditorFor(model => model.Employee.Name, new { htmlAttributes = new { @class = "form-control", @required = "required", @pattern = "[a-zA-Z ]+" } })
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -52,7 +48,7 @@
                                             <div class="row form-group">
                                                 <div class="col-md-12">
                                                     <label for="username">Mobile Number</label>
-                                                    @Html.EditorFor(model => model.Employee.MobileNo, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                                                    @Html.EditorFor(model => model.Employee.MobileNo, new { htmlAttributes = new { @class = "form-control", @required = "required", @pattern = "^[0-9]*$" } })
                                                 </div>
                                             </div>
 
@@ -71,13 +67,14 @@
                                             </div>
                                        }
                                     </div>
-                                    <div class="tab-content-inner" data-content="login">
+                                    <div class="tab-content-inner active" data-content="login">
                                         @using (Html.BeginForm("Index", "Salary"))
                                         {
-                                            if (Model.LoginMessage != null)
+                                            if (Model.Message != null)
                                             {
-                                                @Html.Label(Model.LoginMessage, new { @style = "color:red;" })
+                                                @Html.Label(Model.Message, new { @style = "color:red;" })
                                             }
+
                                             <div class="row form-group">
                                                 <div class="col-md-12">
                                                     <label for="username">Username or Email</label>

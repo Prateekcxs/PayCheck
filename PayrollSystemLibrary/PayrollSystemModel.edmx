@@ -116,6 +116,7 @@
           <Parameter Name="leave" Type="int" Mode="In" />
           <Parameter Name="absent" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetAllEmployeeList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllMonths" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAvailableMonthList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="year" Type="nvarchar" Mode="In" />
@@ -137,6 +138,47 @@
           <Parameter Name="Year" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="GetYearList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeId" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmployeeCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="PAN_no" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="MobileNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="DesignationId" Type="int" Mode="In" />
+          <Parameter Name="DepartmentId" Type="int" Mode="In" />
+          <Parameter Name="JoiningDate" Type="date" Mode="In" />
+          <Parameter Name="TerminationDate" Type="date" Mode="In" />
+          <Parameter Name="EmployeePFCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsAdmin" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="UpdateSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeId" Type="int" Mode="In" />
+          <Parameter Name="MonthId" Type="int" Mode="In" />
+          <Parameter Name="Year" Type="nvarchar" Mode="In" />
+          <Parameter Name="actual_basic" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="actual_hra" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="actual_ca" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="actual_ma" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="actual_ia" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="actual_sa" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="earning_basic" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="earning_hra" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="earning_ca" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="earning_ma" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="earning_ia" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="earning_sa" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="deduction_pf" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="deduction_pt" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="deduction_tds" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="paid_days" Type="int" Mode="In" />
+          <Parameter Name="present_days" Type="int" Mode="In" />
+          <Parameter Name="w_off" Type="int" Mode="In" />
+          <Parameter Name="leave" Type="int" Mode="In" />
+          <Parameter Name="absent" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="PayrollSystemModelStoreContainer">
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
@@ -286,6 +328,48 @@
             <Parameter Name="MonthId" Mode="In" Type="Int32" />
             <Parameter Name="Year" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="UpdateSalary">
+            <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+            <Parameter Name="MonthId" Mode="In" Type="Int32" />
+            <Parameter Name="Year" Mode="In" Type="String" />
+            <Parameter Name="actual_basic" Mode="In" Type="String" />
+            <Parameter Name="actual_hra" Mode="In" Type="String" />
+            <Parameter Name="actual_ca" Mode="In" Type="String" />
+            <Parameter Name="actual_ma" Mode="In" Type="String" />
+            <Parameter Name="actual_ia" Mode="In" Type="String" />
+            <Parameter Name="actual_sa" Mode="In" Type="String" />
+            <Parameter Name="earning_basic" Mode="In" Type="String" />
+            <Parameter Name="earning_hra" Mode="In" Type="String" />
+            <Parameter Name="earning_ca" Mode="In" Type="String" />
+            <Parameter Name="earning_ma" Mode="In" Type="String" />
+            <Parameter Name="earning_ia" Mode="In" Type="String" />
+            <Parameter Name="earning_sa" Mode="In" Type="String" />
+            <Parameter Name="deduction_pf" Mode="In" Type="String" />
+            <Parameter Name="deduction_pt" Mode="In" Type="String" />
+            <Parameter Name="deduction_tds" Mode="In" Type="String" />
+            <Parameter Name="paid_days" Mode="In" Type="Int32" />
+            <Parameter Name="present_days" Mode="In" Type="Int32" />
+            <Parameter Name="w_off" Mode="In" Type="Int32" />
+            <Parameter Name="leave" Mode="In" Type="Int32" />
+            <Parameter Name="absent" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateEmployee">
+            <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="EmployeeCode" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="PAN_no" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="MobileNo" Mode="In" Type="String" />
+            <Parameter Name="DesignationId" Mode="In" Type="Int32" />
+            <Parameter Name="DepartmentId" Mode="In" Type="Int32" />
+            <Parameter Name="JoiningDate" Mode="In" Type="DateTime" />
+            <Parameter Name="TerminationDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EmployeePFCode" Mode="In" Type="String" />
+            <Parameter Name="IsAdmin" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllEmployeeList" ReturnType="Collection(PayrollSystemModel.GetAllEmployeeList_Result)" />
         </EntityContainer>
         <ComplexType Name="GetAllMonths_Result">
           <Property Type="Int32" Name="MonthId" Nullable="false" />
@@ -331,7 +415,7 @@
         </ComplexType>
         <ComplexType Name="GetSalaryOfEmployeeByEmployeeIdMonthYear_Result">
           <Property Type="Int32" Name="SalaryId" Nullable="false" />
-          <Property Type="Int32" Name="EmployeeId" Nullable="true" />
+          <Property Type="Int32" Name="EmployeeId" Nullable="false" />
           <Property Type="Int32" Name="MonthId" Nullable="false" />
           <Property Type="String" Name="Year" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="actual_basic" Nullable="true" />
@@ -359,6 +443,24 @@
           <Property Type="Int32" Name="Gross_Total" Nullable="true" />
           <Property Type="Int32" Name="Net_Total" Nullable="true" />
           <Property Type="Int32" Name="Deduction_Total" Nullable="true" />
+          <Property Type="String" Name="EmployeeName" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="GetAllEmployeeList_Result">
+          <Property Type="Int32" Name="EmployeeId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="EmployeeCode" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="PAN_no" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="DesignationId" Nullable="true" />
+          <Property Type="Int32" Name="DepartmentId" Nullable="true" />
+          <Property Type="DateTime" Name="JoiningDate" Nullable="true" />
+          <Property Type="DateTime" Name="TerminationDate" Nullable="true" />
+          <Property Type="String" Name="EmployeePFCode" Nullable="true" MaxLength="500" />
+          <Property Type="Boolean" Name="IsAdmin" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -535,6 +637,30 @@
                 <ScalarProperty Name="Gross_Total" ColumnName="Gross_Total" />
                 <ScalarProperty Name="Net_Total" ColumnName="Net_Total" />
                 <ScalarProperty Name="Deduction_Total" ColumnName="Deduction_Total" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateSalary" FunctionName="PayrollSystemModel.Store.UpdateSalary" />
+          <FunctionImportMapping FunctionImportName="UpdateEmployee" FunctionName="PayrollSystemModel.Store.UpdateEmployee" />
+          <FunctionImportMapping FunctionImportName="GetAllEmployeeList" FunctionName="PayrollSystemModel.Store.GetAllEmployeeList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PayrollSystemModel.GetAllEmployeeList_Result">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PAN_no" ColumnName="PAN_no" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+                <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+                <ScalarProperty Name="EmployeePFCode" ColumnName="EmployeePFCode" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

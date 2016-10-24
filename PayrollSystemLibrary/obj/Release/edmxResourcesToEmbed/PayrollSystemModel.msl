@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PayrollSystemModelStoreContainer" CdmEntityContainer="PayrollSystemEntities">
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="PayrollSystemModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Designations">
+      <EntityTypeMapping TypeName="PayrollSystemModel.Designation">
+        <MappingFragment StoreEntitySet="Designation">
+          <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+          <ScalarProperty Name="DesignationName" ColumnName="DesignationName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="PayrollSystemModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="PAN_no" ColumnName="PAN_no" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+          <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+          <ScalarProperty Name="EmployeePFCode" ColumnName="EmployeePFCode" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Months">
+      <EntityTypeMapping TypeName="PayrollSystemModel.Month">
+        <MappingFragment StoreEntitySet="Month">
+          <ScalarProperty Name="MonthId" ColumnName="MonthId" />
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salaries">
+      <EntityTypeMapping TypeName="PayrollSystemModel.Salary">
+        <MappingFragment StoreEntitySet="Salary">
+          <ScalarProperty Name="SalaryId" ColumnName="SalaryId" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="MonthId" ColumnName="MonthId" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="actual_basic" ColumnName="actual_basic" />
+          <ScalarProperty Name="actual_hra" ColumnName="actual_hra" />
+          <ScalarProperty Name="actual_ca" ColumnName="actual_ca" />
+          <ScalarProperty Name="actual_ma" ColumnName="actual_ma" />
+          <ScalarProperty Name="actual_ia" ColumnName="actual_ia" />
+          <ScalarProperty Name="actual_sa" ColumnName="actual_sa" />
+          <ScalarProperty Name="earning_basic" ColumnName="earning_basic" />
+          <ScalarProperty Name="earning_hra" ColumnName="earning_hra" />
+          <ScalarProperty Name="earning_ca" ColumnName="earning_ca" />
+          <ScalarProperty Name="earning_ma" ColumnName="earning_ma" />
+          <ScalarProperty Name="earning_ia" ColumnName="earning_ia" />
+          <ScalarProperty Name="earning_sa" ColumnName="earning_sa" />
+          <ScalarProperty Name="deduction_pf" ColumnName="deduction_pf" />
+          <ScalarProperty Name="deduction_pt" ColumnName="deduction_pt" />
+          <ScalarProperty Name="deduction_tds" ColumnName="deduction_tds" />
+          <ScalarProperty Name="paid_days" ColumnName="paid_days" />
+          <ScalarProperty Name="present_days" ColumnName="present_days" />
+          <ScalarProperty Name="w_off" ColumnName="w_off" />
+          <ScalarProperty Name="leave" ColumnName="leave" />
+          <ScalarProperty Name="absent" ColumnName="absent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddEmployee" FunctionName="PayrollSystemModel.Store.AddEmployee" />
+    <FunctionImportMapping FunctionImportName="AddSalary" FunctionName="PayrollSystemModel.Store.AddSalary" />
+    <FunctionImportMapping FunctionImportName="GetAllMonths" FunctionName="PayrollSystemModel.Store.GetAllMonths">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PayrollSystemModel.GetAllMonths_Result">
+          <ScalarProperty Name="MonthId" ColumnName="MonthId" />
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAvailableMonthList" FunctionName="PayrollSystemModel.Store.GetAvailableMonthList" />
+    <FunctionImportMapping FunctionImportName="GetEmployeeByEmailAddress" FunctionName="PayrollSystemModel.Store.GetEmployeeByEmailAddress">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PayrollSystemModel.GetEmployeeByEmailAddress_Result">
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="PAN_no" ColumnName="PAN_no" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+          <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+          <ScalarProperty Name="EmployeePFCode" ColumnName="EmployeePFCode" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetEmployeeByEmailAndPassword" FunctionName="PayrollSystemModel.Store.GetEmployeeByEmailAndPassword">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PayrollSystemModel.GetEmployeeByEmailAndPassword_Result">
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="PAN_no" ColumnName="PAN_no" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+          <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+          <ScalarProperty Name="EmployeePFCode" ColumnName="EmployeePFCode" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetMonthListByYear" FunctionName="PayrollSystemModel.Store.GetMonthListByYear">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PayrollSystemModel.GetMonthListByYear_Result">
+          <ScalarProperty Name="MonthId" ColumnName="MonthId" />
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetYearList" FunctionName="PayrollSystemModel.Store.GetYearList" />
+    <FunctionImportMapping FunctionImportName="GetSalaryOfEmployeeByEmployeeIdMonthYear" FunctionName="PayrollSystemModel.Store.GetSalaryOfEmployeeByEmployeeIdMonthYear">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PayrollSystemModel.GetSalaryOfEmployeeByEmployeeIdMonthYear_Result">
+          <ScalarProperty Name="SalaryId" ColumnName="SalaryId" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="MonthId" ColumnName="MonthId" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="actual_basic" ColumnName="actual_basic" />
+          <ScalarProperty Name="actual_hra" ColumnName="actual_hra" />
+          <ScalarProperty Name="actual_ca" ColumnName="actual_ca" />
+          <ScalarProperty Name="actual_ma" ColumnName="actual_ma" />
+          <ScalarProperty Name="actual_ia" ColumnName="actual_ia" />
+          <ScalarProperty Name="actual_sa" ColumnName="actual_sa" />
+          <ScalarProperty Name="earning_basic" ColumnName="earning_basic" />
+          <ScalarProperty Name="earning_hra" ColumnName="earning_hra" />
+          <ScalarProperty Name="earning_ca" ColumnName="earning_ca" />
+          <ScalarProperty Name="earning_ma" ColumnName="earning_ma" />
+          <ScalarProperty Name="earning_ia" ColumnName="earning_ia" />
+          <ScalarProperty Name="earning_sa" ColumnName="earning_sa" />
+          <ScalarProperty Name="deduction_pf" ColumnName="deduction_pf" />
+          <ScalarProperty Name="deduction_pt" ColumnName="deduction_pt" />
+          <ScalarProperty Name="deduction_tds" ColumnName="deduction_tds" />
+          <ScalarProperty Name="paid_days" ColumnName="paid_days" />
+          <ScalarProperty Name="present_days" ColumnName="present_days" />
+          <ScalarProperty Name="w_off" ColumnName="w_off" />
+          <ScalarProperty Name="leave" ColumnName="leave" />
+          <ScalarProperty Name="absent" ColumnName="absent" />
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+          <ScalarProperty Name="Gross" ColumnName="Gross" />
+          <ScalarProperty Name="Gross_Total" ColumnName="Gross_Total" />
+          <ScalarProperty Name="Net_Total" ColumnName="Net_Total" />
+          <ScalarProperty Name="Deduction_Total" ColumnName="Deduction_Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
