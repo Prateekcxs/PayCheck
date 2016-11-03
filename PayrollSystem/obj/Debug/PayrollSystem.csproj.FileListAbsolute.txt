@@ -23,5 +23,4 @@ D:\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.csprojResolveAss
 D:\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.dll
 D:\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.pdb
 D:\Projects\PayrollSystem\PayrollSystem\bin\Select.Html.dep
-D:\Projects\PayrollSystem\PayrollSystem\bin\NReco.PdfGenerator.dll
 D:\Projects\PayrollSystem\PayrollSystem\bin\NReco.PdfGenerator.xml

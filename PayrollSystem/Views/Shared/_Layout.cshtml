@@ -23,9 +23,6 @@
     <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-
-
-
     <!-- jQuery -->
     <script src="~/Scripts/jquery.min.js"></script>
     <!-- jQuery Easing -->
@@ -50,6 +47,7 @@
 
 </head>
 <body>
+    <div id="loader" style="position: fixed; left: 48%;  top: 46%;  width: 100%;  height: 100%;  z-index: 9999;display:none;"><img src="../images/loader.gif" /></div>
     <div class="gtco-loader"></div>
 
     <div id="page">
@@ -60,15 +58,17 @@
 
                     <div class="row">
                         <div class="col-sm-4 col-xs-12">
-                            
-                            <div id="gtco-logo"><a href="/">Cynexis Solutions Pvt. Ltd.</a></div>
+
+                            <div id="gtco-logo">
+                                <a href="/"><img src="~/Images/cynexis-logo-transparent.png" /></a>
+                            </div>
                         </div>
                         <div class="col-xs-8 text-right menu-1">
                             <ul>
-                               
+
 
                                 @{Html.RenderAction("LoggedInNavigation");}
-                                
+
                             </ul>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                     <p>&copy; @DateTime.Now.Year - Cynexis Solution Pvt. Ltd.</p>
                 </footer>
             </div>
-                            </div>
-                        </div>
+        </div>
+    </div>
 </body>
 </html>

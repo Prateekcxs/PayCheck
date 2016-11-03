@@ -17,6 +17,12 @@
     });
 });
 
+window.onbeforeunload = function ()
+{
+    $('#loader').show();
+    $("#gtco-header :input").attr("disabled", true);
+}
+
     function ToggleGenerateBtn() {
 
         var atLeastOneIsChecked = $('input[name="chkMonthList"]:checked').length > 0;

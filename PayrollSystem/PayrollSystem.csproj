@@ -106,6 +106,7 @@
     <Content Include="fonts\icomoon\icomoon.svg" />
     <Content Include="fonts\themify-icons\themify.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\cynexis_logo_mail.png" />
     <Content Include="Images\img_1.jpg" />
     <Content Include="Images\img_2.jpg" />
     <Content Include="Images\img_3.jpg" />
@@ -117,6 +118,7 @@
     <Content Include="Images\img_bg_3.jpg" />
     <Content Include="Images\iphone.png" />
     <Content Include="Images\loader.gif" />
+    <Content Include="Images\cynexis-logo-transparent.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\macbook.png" />
     <Content Include="Images\person_1.jpg" />
@@ -155,7 +157,8 @@
     <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Salary.js" />
-    <Content Include="Views\Salary\SalarySlipHtml.cshtml" />
+    <Content Include="Views\Salary\old_SalarySlipHtml.cshtml" />
+    <None Include="Views\Salary\SalarySlipHtml.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
