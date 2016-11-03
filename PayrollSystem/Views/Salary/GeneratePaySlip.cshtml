@@ -8,7 +8,7 @@
 
     @{Html.RenderPartial("WelcomeHeader");}
 
-    <a href="EditProfile" style="text-align:left !important;">Edit Profile</a>
+    <a href="EditProfile" style="text-align:left !important;margin-left:1.2%;">Edit Profile</a>
     <br />
     <br />
     @if (Model.Message != null)
@@ -22,7 +22,7 @@
     @using (Html.BeginForm("GeneratePaySlip", "Salary", FormMethod.Post, new { @id = "GeneratePaySlip" }))
     {
        
-        @Html.DropDownList("SalaryYear", new SelectList(Model.Year, "", ""), "Please select Year")
+        @Html.DropDownList("SalaryYear", new SelectList(Model.Year, "", ""), "Please select Year", new { @class = "form-control", @style="width:auto;background:#ffffff;" })
         @Html.Hidden("SelectedYear")
         <br />
         if (ViewData["Message"] != null)

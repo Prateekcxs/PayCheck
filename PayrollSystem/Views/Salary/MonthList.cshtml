@@ -1,16 +1,18 @@
 ﻿@model PayrollSystem.Models.SalaryClass
 
 
-  @if(Model != null)
+  @if (Model != null)
   {
-    foreach (var month in Model.GetMonthListByYear)
-    {
-        @Html.CheckBox(month.MonthId.ToString(), new { @id = month.MonthId.ToString(), @Name = "chkMonthList", @value=month.MonthId.ToString(), onclick = "ToggleGenerateBtn();" });
-        @Html.Label(month.MonthName);
-        <br />
-    }
+      foreach (var month in Model.GetMonthListByYear)
+      {
+        <div class="form-inline">
+            @Html.CheckBox(month.MonthId.ToString(), new { @id = month.MonthId.ToString(), @Name = "chkMonthList", @value = month.MonthId.ToString(), onclick = "ToggleGenerateBtn();", @class = "checkbox" })
+            @Html.Label(month.MonthName, new { @class = "label" })
+            <br />
+        </div>
+      }
   }
-    else
+  else
   {
       <br />
   }

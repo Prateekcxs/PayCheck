@@ -1,6 +1,6 @@
 ﻿@if (Session["user"] != null)
 {
     System.Collections.Generic.List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result> lst = (System.Collections.Generic.List<PayrollSystemLibrary.GetEmployeeByEmailAndPassword_Result>)(Session["user"]);
-<span>Welcome @lst.FirstOrDefault().Name</span>
+<span class="label">Welcome, @lst.FirstOrDefault().Name</span>
 }
 <br />

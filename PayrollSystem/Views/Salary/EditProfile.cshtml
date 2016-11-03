@@ -15,8 +15,8 @@
     @Html.HiddenFor(model => model.GetEmployeeByEmailAddress[i].EmployeeId)
     @Html.HiddenFor(model => model.GetEmployeeByEmailAddress[i].IsAdmin)
 
-    <div class="form-wrap">
-        <div class="tab-content" style="width:50%;">
+    <div class="form-wrap" style="width:50%;">
+        <div class="tab-content">
             @if (Model.Message != null)
             {
                 @Html.Label(Model.Message, new { @style = "color:red;" })
@@ -36,7 +36,7 @@
             <div class="row form-group">
                 <div class="col-md-12">
                     <label for="password">Password</label>
-                    @Html.PasswordFor(model => model.GetEmployeeByEmailAddress[i].Password, new { @class = "form-control", @required = "required" } )
+                    @Html.PasswordFor(model => model.GetEmployeeByEmailAddress[i].Password, new { @class = "form-control", @required = "required" })
                 </div>
             </div>
             <div class="row form-group" style="display:none;">
