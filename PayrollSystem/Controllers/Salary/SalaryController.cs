@@ -19,14 +19,14 @@ namespace PayrollSystem.Controllers.Salary
         string output_path_pdf = "";
         public ActionResult Index()
         {
-            if(!ValidateLogin())
+            if (!ValidateLogin())
             {
                 SalaryClass model = new SalaryClass();
                 return View(model);
             }
             else
             {
-                return RedirectToAction("GeneratePaySlip"); 
+                return RedirectToAction("GeneratePaySlip");
             }
         }
 
@@ -75,7 +75,7 @@ namespace PayrollSystem.Controllers.Salary
                 return View(model);
             }
         }
-    
+
 
         public ActionResult GeneratePaySlip()
         {
@@ -89,7 +89,7 @@ namespace PayrollSystem.Controllers.Salary
 
                 model.Year = y_lst;
 
-                if(model.Year.Count == 0)
+                if (model.Year.Count == 0)
                 {
                     ViewData["Message"] = "No salary data for you has been uploaded yet";
                 }
@@ -138,24 +138,28 @@ namespace PayrollSystem.Controllers.Salary
 
 
 
-                        if (!System.IO.File.Exists(output_path_pdf))
+                        if (System.IO.File.Exists(output_path_pdf))
                         {
-                            SalarySlipHtmlContent = ViewToString("SalarySlipHtml", model);
-
-
-
-                            ///////////////////////////////////////////////// Generate PDF from HTML //////////////////////////////
-
-                            HtmlToPdfConverter htmlToPdf = new NReco.PdfGenerator.HtmlToPdfConverter();
-
-                            byte[] pdfBytes = htmlToPdf.GeneratePdf(SalarySlipHtmlContent);
-
-                            System.IO.File.WriteAllBytes(output_path_pdf, pdfBytes);
-
-                            /////////////////////////////////////End Generate PDF from HTML //////////////////////////////
-
-
+                            System.GC.Collect();
+                            System.GC.WaitForPendingFinalizers();
+                            System.IO.File.Delete(output_path_pdf);
                         }
+                        SalarySlipHtmlContent = ViewToString("SalarySlipHtml", model);
+
+
+
+                        ///////////////////////////////////////////////// Generate PDF from HTML //////////////////////////////
+
+                        HtmlToPdfConverter htmlToPdf = new NReco.PdfGenerator.HtmlToPdfConverter();
+
+                        byte[] pdfBytes = htmlToPdf.GeneratePdf(SalarySlipHtmlContent);
+
+                        System.IO.File.WriteAllBytes(output_path_pdf, pdfBytes);
+
+                        /////////////////////////////////////End Generate PDF from HTML //////////////////////////////
+
+
+
 
 
                         mm1.Subject += model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().MonthName + ", ";
@@ -172,7 +176,7 @@ namespace PayrollSystem.Controllers.Salary
                     mm1.Body = mm1.Body.Trim().TrimEnd(',');
                     // mm1.Subject += " " + model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().Year;
                     //   mm1.Body += " " + model.GetSalaryOfEmployeeByEmployeeIdMonthYear.FirstOrDefault().Year;
-                //    mm1.IsBodyHtml = true;
+                    //    mm1.IsBodyHtml = true;
                     mm1.Priority = MailPriority.Normal;
 
                     for (int i = 0; i < 5; i++)
@@ -250,12 +254,12 @@ namespace PayrollSystem.Controllers.Salary
         {
             if (ValidateLogin())
             {
-                    db.UpdateEmployee(model.GetEmployeeByEmailAddress.FirstOrDefault().EmployeeId, model.GetEmployeeByEmailAddress.FirstOrDefault().Name, model.GetEmployeeByEmailAddress.FirstOrDefault().EmployeeCode,
-                                      FormsAuthentication.HashPasswordForStoringInConfigFile(model.GetEmployeeByEmailAddress.FirstOrDefault().Password, "MD5"), model.GetEmployeeByEmailAddress.FirstOrDefault().Gender,
-                                      model.GetEmployeeByEmailAddress.FirstOrDefault().PAN_no, model.GetEmployeeByEmailAddress.FirstOrDefault().Address, model.GetEmployeeByEmailAddress.FirstOrDefault().MobileNo,
-                                      model.GetEmployeeByEmailAddress.FirstOrDefault().DesignationId, model.GetEmployeeByEmailAddress.FirstOrDefault().DepartmentId, model.GetEmployeeByEmailAddress.FirstOrDefault().JoiningDate,
-                                      model.GetEmployeeByEmailAddress.FirstOrDefault().TerminationDate, model.GetEmployeeByEmailAddress.FirstOrDefault().EmployeePFCode, model.GetEmployeeByEmailAddress.FirstOrDefault().IsAdmin);
-                    model.Message = "Updated successfully";
+                db.UpdateEmployee(model.GetEmployeeByEmailAddress.FirstOrDefault().EmployeeId, model.GetEmployeeByEmailAddress.FirstOrDefault().Name, model.GetEmployeeByEmailAddress.FirstOrDefault().EmployeeCode,
+                                  FormsAuthentication.HashPasswordForStoringInConfigFile(model.GetEmployeeByEmailAddress.FirstOrDefault().Password, "MD5"), model.GetEmployeeByEmailAddress.FirstOrDefault().Gender,
+                                  model.GetEmployeeByEmailAddress.FirstOrDefault().PAN_no, model.GetEmployeeByEmailAddress.FirstOrDefault().Address, model.GetEmployeeByEmailAddress.FirstOrDefault().MobileNo,
+                                  model.GetEmployeeByEmailAddress.FirstOrDefault().DesignationId, model.GetEmployeeByEmailAddress.FirstOrDefault().DepartmentId, model.GetEmployeeByEmailAddress.FirstOrDefault().JoiningDate,
+                                  model.GetEmployeeByEmailAddress.FirstOrDefault().TerminationDate, model.GetEmployeeByEmailAddress.FirstOrDefault().EmployeePFCode, model.GetEmployeeByEmailAddress.FirstOrDefault().IsAdmin);
+                model.Message = "Updated successfully";
 
                 return View(model);
             }
