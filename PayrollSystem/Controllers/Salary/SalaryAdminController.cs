@@ -125,7 +125,10 @@ namespace PayrollSystem.Controllers.SalaryAdmin
             oda.SelectCommand = cmdExcel;
             oda.Fill(dt);
 
-            dt = dt.Select().Where(row => row[0].ToString() != "").CopyToDataTable();
+           // dt = dt.Select().Where(row => row[0].ToString() != "").CopyToDataTable();
+
+            dt = dt.Select().Where(row => row.ItemArray.All(c => !string.IsNullOrWhiteSpace(c.ToString()))).CopyToDataTable();
+
 
           
             connExcel.Close();
